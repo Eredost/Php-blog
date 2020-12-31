@@ -10,9 +10,15 @@
     ],
     "minimum-stability": "stable",
     "require-dev": {
-        "symfony/var-dumper": "^5.2"
+        "symfony/var-dumper": "^5.2",
+        "roave/security-advisories": "dev-master"
     },
     "require": {
         "altorouter/altorouter": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Blog\\": "App/"
+        }
     }
 }
