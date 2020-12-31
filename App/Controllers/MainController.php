@@ -4,10 +4,10 @@ namespace Blog\Controllers;
 
 use Blog\TemplateEngine;
 
-class MainController
+class MainController extends TemplateEngine
 {
     public function home()
     {
-        echo "Hello world";
+        return $this->render('frontend' . DIRECTORY_SEPARATOR . 'homepage');
     }
 }
