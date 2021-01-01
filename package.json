@@ -1,0 +1,24 @@
+{
+  "name": "blog-php",
+  "version": "1.0.0",
+  "description": "Website highlighting my skills and achievements as well as a blog section",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eredost/Php-blog.git"
+  },
+  "keywords": [],
+  "author": "Eredost",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Eredost/Php-blog/issues"
+  },
+  "homepage": "https://github.com/Eredost/Php-blog#readme",
+  "devDependencies": {
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  }
+}
