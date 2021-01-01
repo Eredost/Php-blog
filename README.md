@@ -1,0 +1,2 @@
+# Php-blog
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/67655362551a412b9e931837105af165)](https://app.codacy.com/gh/Eredost/Php-blog?utm_source=github.com&utm_medium=referral&utm_content=Eredost/Php-blog&utm_campaign=Badge_Grade)
