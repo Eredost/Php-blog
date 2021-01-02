@@ -7,5 +7,5 @@
 <?php
 
 $content = ob_get_clean();
-$baseTemplate = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'base.tpl.php';
-include $baseTemplate;
+
+include '../base.tpl.php';
