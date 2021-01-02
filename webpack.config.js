@@ -1,11 +1,12 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'js/[name].js',
-        path: path.resolve(__dirname, 'public/assets'),
+        path: path.resolve(__dirname, 'public'),
     },
     module: {
         rules: [
@@ -29,12 +30,26 @@ module.exports = {
                     'postcss-loader',
                     'sass-loader'
                 ]
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/',
+                        publicPath: 'fonts'
+                    }
+                }
             }
         ]
     },
     "plugins": [
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [ 'main.css', 'fonts/*', 'js/*' ]
+        }),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].css'
+            filename: '[name].css'
         })
     ]
 };
