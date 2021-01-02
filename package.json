@@ -4,7 +4,7 @@
   "description": "Website highlighting my skills and achievements as well as a blog section",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,21 @@
   },
   "homepage": "https://github.com/Eredost/Php-blog#readme",
   "devDependencies": {
+    "autoprefixer": "^10.1.0",
+    "css-loader": "^5.0.1",
+    "mini-css-extract-plugin": "^1.3.3",
+    "postcss-loader": "^4.1.0",
+    "sass": "^1.32.0",
+    "sass-loader": "^10.1.0",
     "webpack": "^5.11.1",
     "webpack-cli": "^4.3.1"
-  }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "last 4 versions"
+  ]
 }
