@@ -1,9 +1,10 @@
 @charset "UTF-8";
 
+// Abstracts
 @import "abstracts/variables";
-
-@import "~reset-css/sass/reset",
-  "~font-awesome/scss/font-awesome";
+// Vendors
+@import "~reset-css/sass/reset";
+@import "~font-awesome/scss/font-awesome";
 
 //@import "base/";
 
