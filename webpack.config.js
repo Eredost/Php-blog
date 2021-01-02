@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -50,6 +51,25 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css'
+        }),
+        new BrowserSyncPlugin({
+            files: ['src/scss/*.scss', 'App/views/*', 'App/views/*/*'],
+            startPath: '/public',
+            host: 'localhost',
+            port: 3001,
+            proxy: 'http://localhost:8080/'
+        }, {
+            reload: false
         })
-    ]
+    ],
+    devServer: {
+        proxy: {
+            '/': 'http://localhost:80/blog-php'
+        },
+        publicPath: '/public',
+        stats: 'errors-only',
+        host: process.env.HOST,
+        port: process.env.PORT,
+        open: false,
+    }
 };

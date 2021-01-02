@@ -66,7 +66,7 @@ final class App
             $controller->$methodName($match['params']);
         } else {
 
-            throw new \Exception();
+            throw new \Exception('No route matched !');
         }
     }
 
