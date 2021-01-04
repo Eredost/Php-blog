@@ -5,7 +5,7 @@ namespace Blog\Models;
 use Blog\Models\Traits\HydratorTrait;
 use Blog\Models\Traits\TimestampableTrait;
 
-class Post
+class Post extends PostManager
 {
     use HydratorTrait;
     use TimestampableTrait;

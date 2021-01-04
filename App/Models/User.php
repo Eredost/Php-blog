@@ -5,7 +5,7 @@ namespace Blog\Models;
 use Blog\Models\Traits\HydratorTrait;
 use Blog\Models\Traits\TimestampableTrait;
 
-class User
+class User extends UserManager
 {
     use HydratorTrait;
     use TimestampableTrait;
