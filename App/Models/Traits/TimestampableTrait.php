@@ -11,7 +11,7 @@ trait TimestampableTrait
     private $updatedAt;
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -31,7 +31,7 @@ trait TimestampableTrait
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt(): ?\DateTime
     {
