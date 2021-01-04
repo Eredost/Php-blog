@@ -57,17 +57,17 @@ final class App
     {
         $match = $this->router->match();
 
-        if ($match) {
-            $controllerInfo = explode('#', $match['target']);
-            $controllerName = $controllerInfo[0];
-            $methodName = $controllerInfo[1];
-
-            $controller = new $controllerName($this->router);
-            $controller->$methodName($match['params']);
-        } else {
+        if (!$match) {
 
             throw new \Exception('No route matched !');
         }
+
+        $controllerInfo = explode('#', $match['target']);
+        $controllerName = $controllerInfo[0];
+        $methodName = $controllerInfo[1];
+
+        $controller = new $controllerName($this->router);
+        $controller->$methodName($match['params']);
     }
 
     /**
