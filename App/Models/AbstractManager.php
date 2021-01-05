@@ -30,6 +30,7 @@ abstract class AbstractManager
     {
         $tableName = static::TABLE_NAME;
         $tableFields = implode(', ', static::TABLE_FIELDS);
+        $className = preg_replace('/Manager$/', '', static::class);
 
         $pdo = DBData::getDBH();
         $sql = "
@@ -38,7 +39,7 @@ abstract class AbstractManager
         ";
         $request = $pdo->query($sql);
 
-        return $request->fetchAll(\PDO::FETCH_CLASS, preg_replace('/Manager$/', '', static::class));
+        return $request->fetchAll(\PDO::FETCH_CLASS, $className);
     }
 
     /**
@@ -52,6 +53,7 @@ abstract class AbstractManager
     {
         $tableName = static::TABLE_NAME;
         $tableFields = implode(', ', static::TABLE_FIELDS);
+        $className = preg_replace('/Manager$/', '', static::class);
 
         $pdo = DBData::getDBH();
         $sql = "
@@ -64,17 +66,37 @@ abstract class AbstractManager
             'id' => $id,
         ]);
 
-        return $request->fetchObject(preg_replace('/Manager$/', '', static::class));
+        return $request->fetchObject($className);
     }
 
     /**
      * Save an object in the database
      *
-     * @return self
+     * @return boolean
      */
-    public function insert()
+    public function save(): bool
     {
-        // TODO: Implement insert method
+        $tableName = static::TABLE_NAME;
+        $fieldsName = static::TABLE_FIELDS;
+
+        $pdo = DBData::getDBH();
+        $insertValues = implode(', ', $fieldsName);
+        $paramsValues = [];
+        $executeValues = [];
+
+        foreach ($fieldsName as $index => $value) {
+            $paramsValues[] = ':' . $value;
+            $executeValues[':'.$value] = $this->{'get'.ucfirst($value)}();
+        }
+
+        $paramsValues = implode(', ', $paramsValues);
+        $sql = "
+            INSERT INTO {$tableName} ({$insertValues})
+                VALUES ({$paramsValues});
+        ";
+        $request = $pdo->prepare($sql);
+
+        return $request->execute($executeValues);
     }
 
     /**

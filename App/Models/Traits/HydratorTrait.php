@@ -13,7 +13,7 @@ trait HydratorTrait
     {
         foreach ($data as $property => $value) {
             if (method_exists($this, 'set'.ucfirst($property))) {
-                $this->${'set'.ucfirst($property)}($value);
+                $this->{'set'.ucfirst($property)}($value);
             }
         }
     }

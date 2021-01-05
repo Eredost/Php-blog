@@ -1,4 +1,9 @@
-<?php ob_start(); ?>
+<?php
+
+$title = 'Dev blog';
+ob_start();
+
+?>
 
 <h1>Hello les amis</h1>
 <p>Hello world !</p>
@@ -8,4 +13,4 @@
 
 $content = ob_get_clean();
 
-include '../base.tpl.php';
+include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'base.tpl.php';

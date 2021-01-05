@@ -43,7 +43,7 @@ class Comment extends CommentManager
      *
      * @return Comment
      */
-    public function setId(int $id): Comment
+    protected function setId(int $id): Comment
     {
         $this->id = $id;
 

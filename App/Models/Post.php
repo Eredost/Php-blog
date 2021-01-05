@@ -46,7 +46,7 @@ class Post extends PostManager
      *
      * @return Post
      */
-    public function setId(int $id): Post
+    protected function setId(int $id): Post
     {
         $this->id = $id;
 
