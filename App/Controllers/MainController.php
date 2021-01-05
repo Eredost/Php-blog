@@ -2,9 +2,8 @@
 
 namespace Blog\Controllers;
 
-use Blog\TemplateEngine;
 use Blog\Models\UserManager;
-use Blog\Utils\DBData;
+use Blog\TemplateEngine;
 
 class MainController extends TemplateEngine
 {

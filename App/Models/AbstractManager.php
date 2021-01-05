@@ -2,6 +2,8 @@
 
 namespace Blog\Models;
 
+use Blog\Utils\DBData;
+
 abstract class AbstractManager
 {
     /**
@@ -22,21 +24,47 @@ abstract class AbstractManager
     /**
      * Method to retrieve all the objects of a given entity
      *
-     * @return object[]
+     * @return array
      */
     public static function findAll()
     {
-        // TODO: Implement findAll method
+        $tableName = static::TABLE_NAME;
+        $tableFields = implode(', ', static::TABLE_FIELDS);
+
+        $pdo = DBData::getDBH();
+        $sql = "
+            SELECT {$tableFields}
+                FROM {$tableName};
+        ";
+        $request = $pdo->query($sql);
+
+        return $request->fetchAll(\PDO::FETCH_CLASS, preg_replace('/Manager$/', '', static::class));
     }
 
     /**
      * A method to retrieve a single object from the given identifier
      *
      * @param int $id The identifier of the entity
+     *
+     * @return mixed
      */
     public static function find(int $id)
     {
-        // TODO: Implement find method
+        $tableName = static::TABLE_NAME;
+        $tableFields = implode(', ', static::TABLE_FIELDS);
+
+        $pdo = DBData::getDBH();
+        $sql = "
+            SELECT {$tableFields}
+                FROM {$tableName}
+                WHERE id = :id;
+        ";
+        $request = $pdo->prepare($sql);
+        $request->execute([
+            'id' => $id,
+        ]);
+
+        return $request->fetchObject(preg_replace('/Manager$/', '', static::class));
     }
 
     /**

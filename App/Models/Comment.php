@@ -25,7 +25,7 @@ class Comment extends CommentManager
     /** @var int $userId */
     private $userId;
 
-    public function __construct(array $data)
+    public function __construct(array $data = [])
     {
         $this->hydrate($data);
     }
