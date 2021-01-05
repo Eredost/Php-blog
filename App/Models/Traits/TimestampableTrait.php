@@ -4,26 +4,26 @@ namespace Blog\Models\Traits;
 
 trait TimestampableTrait
 {
-    /** @var \DateTime $createdAt */
+    /** @var string $createdAt */
     private $createdAt;
 
-    /** @var \DateTime $updatedAt */
+    /** @var string $updatedAt */
     private $updatedAt;
 
     /**
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getCreatedAt(): ?\DateTime
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param string $createdAt
      *
      * @return self
      */
-    public function setCreatedAt(\DateTime $createdAt): self
+    public function setCreatedAt(string $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -31,19 +31,19 @@ trait TimestampableTrait
     }
 
     /**
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getUpdatedAt(): ?\DateTime
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param string $updatedAt
      *
      * @return self
      */
-    public function setUpdatedAt(\DateTime $updatedAt): self
+    public function setUpdatedAt(string $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 

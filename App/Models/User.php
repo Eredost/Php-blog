@@ -19,7 +19,7 @@ class User extends UserManager
     /** @var string $email */
     private $email;
 
-    /** @var array $role */
+    /** @var string $role */
     private $role;
 
     /** @var string $password */
@@ -43,7 +43,7 @@ class User extends UserManager
      *
      * @return User
      */
-    public function setId(int $id): User
+    protected function setId(int $id): User
     {
         $this->id = $id;
 
@@ -91,19 +91,19 @@ class User extends UserManager
     }
 
     /**
-     * @return array|null
+     * @return string|null
      */
-    public function getRole(): ?array
+    public function getRole(): ?string
     {
         return $this->role;
     }
 
     /**
-     * @param array $role
+     * @param string $role
      *
      * @return User
      */
-    public function setRole(array $role): User
+    public function setRole(string $role): User
     {
         $this->role = $role;
 
