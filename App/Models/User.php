@@ -25,7 +25,7 @@ class User extends UserManager
     /** @var string $password */
     private $password;
 
-    public function __construct(array $data)
+    public function __construct(array $data = [])
     {
         $this->hydrate($data);
     }
