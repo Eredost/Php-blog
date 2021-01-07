@@ -2,7 +2,7 @@
 
 namespace Blog\Models;
 
-class UserManager extends AbstractManager
+abstract class UserManager extends AbstractManager
 {
     /**
      * {@inheritdoc}
