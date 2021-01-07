@@ -2,7 +2,7 @@
 
 namespace Blog\Models;
 
-class CommentManager extends AbstractManager
+abstract class CommentManager extends AbstractManager
 {
     /**
      * {@inheritdoc}

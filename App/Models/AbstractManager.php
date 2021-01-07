@@ -24,9 +24,11 @@ abstract class AbstractManager
     /**
      * Method to retrieve all the objects of a given entity
      *
-     * @return array
+     * @return array containing all of the remaining rows in the result set.
+     * The array represents each row as an object with properties corresponding
+     * to each column name.
      */
-    public static function findAll()
+    public static function findAll(): array
     {
         $tableName = static::TABLE_NAME;
         $tableFields = implode(', ', static::TABLE_FIELDS);
@@ -47,7 +49,8 @@ abstract class AbstractManager
      *
      * @param int $id The identifier of the entity
      *
-     * @return mixed
+     * @return mixed an instance of the required class with property names that
+     * correspond to the column names or <b>FALSE</b> on failure.
      */
     public static function find(int $id)
     {
@@ -72,14 +75,12 @@ abstract class AbstractManager
     /**
      * Save an object in the database
      *
-     * @return boolean
+     * @return boolean <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
     public function save(): bool
     {
         $tableName = static::TABLE_NAME;
         $fieldsName = static::TABLE_FIELDS;
-
-        $pdo = DBData::getDBH();
         $insertValues = implode(', ', $fieldsName);
         $paramsValues = [];
         $executeValues = [];
@@ -88,12 +89,13 @@ abstract class AbstractManager
             $paramsValues[] = ':' . $value;
             $executeValues[':'.$value] = $this->{'get'.ucfirst($value)}();
         }
-
         $paramsValues = implode(', ', $paramsValues);
+
         $sql = "
             INSERT INTO {$tableName} ({$insertValues})
                 VALUES ({$paramsValues});
         ";
+        $pdo = DBData::getDBH();
         $request = $pdo->prepare($sql);
 
         return $request->execute($executeValues);
@@ -102,18 +104,50 @@ abstract class AbstractManager
     /**
      * Allows the deletion of an object in the database
      *
-     * @return boolean
+     * @return boolean <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
     public function delete()
     {
-        // TODO: Implement delete method
+        $tableName = static::TABLE_NAME;
+
+        $pdo = DBData::getDBH();
+        $sql = "
+            DELETE FROM {$tableName}
+                WHERE id = :id;
+        ";
+        $request = $pdo->prepare($sql);
+
+        return $request->execute([
+            'id' => $this->getId(),
+        ]);
     }
 
     /**
      * Allows to update the properties of an object in the database
+     *
+     * @return boolean <b>TRUE</b> on success or <b>FALSE</b> on failure.
      */
-    public function update()
+    public function update(): bool
     {
-        // TODO: Implement update method
+        $tableName = static::TABLE_NAME;
+        $fieldsName = static::TABLE_FIELDS;
+        $updateValues = [];
+        $executeValues = [];
+
+        foreach ($fieldsName as $index => $value) {
+            $updateValues[] = "$value = :$value";
+            $executeValues[':'.$value] = $this->{'get'.ucfirst($value)}();
+        }
+        $updateValues = implode(', ', $updateValues);
+
+        $sql = "
+            UPDATE {$tableName}
+                SET {$updateValues}
+                WHERE id = :id;
+        ";
+        $pdo = DBData::getDBH();
+        $request = $pdo->prepare($sql);
+
+        return $request->execute($executeValues);
     }
 }

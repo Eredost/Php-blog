@@ -2,7 +2,7 @@
 
 namespace Blog\Models;
 
-class PostManager extends AbstractManager
+abstract class PostManager extends AbstractManager
 {
     /**
      * {@inheritdoc}
