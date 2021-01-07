@@ -1,9 +1,4 @@
-<?php
-
-$title = 'Dev blog';
-ob_start();
-
-?>
+<?php ob_start(); ?>
 
 <h1>Hello les amis</h1>
 <p>Hello world !</p>

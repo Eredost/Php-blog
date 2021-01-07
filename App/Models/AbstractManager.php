@@ -58,12 +58,12 @@ abstract class AbstractManager
         $tableFields = implode(', ', static::TABLE_FIELDS);
         $className = preg_replace('/Manager$/', '', static::class);
 
-        $pdo = DBData::getDBH();
         $sql = "
             SELECT {$tableFields}
                 FROM {$tableName}
                 WHERE id = :id;
         ";
+        $pdo = DBData::getDBH();
         $request = $pdo->prepare($sql);
         $request->execute([
             'id' => $id,
@@ -85,7 +85,7 @@ abstract class AbstractManager
         $paramsValues = [];
         $executeValues = [];
 
-        foreach ($fieldsName as $index => $value) {
+        foreach ($fieldsName as $value) {
             $paramsValues[] = ':' . $value;
             $executeValues[':'.$value] = $this->{'get'.ucfirst($value)}();
         }
@@ -110,11 +110,11 @@ abstract class AbstractManager
     {
         $tableName = static::TABLE_NAME;
 
-        $pdo = DBData::getDBH();
         $sql = "
             DELETE FROM {$tableName}
                 WHERE id = :id;
         ";
+        $pdo = DBData::getDBH();
         $request = $pdo->prepare($sql);
 
         return $request->execute([
@@ -134,7 +134,7 @@ abstract class AbstractManager
         $updateValues = [];
         $executeValues = [];
 
-        foreach ($fieldsName as $index => $value) {
+        foreach ($fieldsName as $value) {
             $updateValues[] = "$value = :$value";
             $executeValues[':'.$value] = $this->{'get'.ucfirst($value)}();
         }
