@@ -27,13 +27,13 @@ class DBData
                 array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING)
             );
         } catch (\Exception $e) {
-            die(<<< HTML
+            echo "
                 Erreur de connexion <br>
                 {$e->getMessage()} <br>
                 <pre>
                     {$e->getTraceAsString()}
                 </pre>
-HTML);
+            ";
         }
     }
 
