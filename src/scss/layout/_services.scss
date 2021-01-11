@@ -1,0 +1,13 @@
+.services {
+  padding-bottom: 0;
+
+  & .section-wrapper {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  @media all and (min-width: $breakpoint-medium) {
+    padding-bottom: 1em;
+  }
+}
