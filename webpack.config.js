@@ -45,7 +45,7 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new BrowserSyncPlugin({
             files: ["src/scss/*.scss", "App/views/*", "App/views/*/*"],
-            startPath: "/public",
+            startPath: "/",
             host: "localhost",
             port: 3001,
             proxy: "http://localhost:8080/"
@@ -55,9 +55,9 @@ module.exports = {
     ],
     devServer: {
         proxy: {
-            "/": "http://localhost:80/blog-php"
+            "/": "http://localhost:80/blog-php/public"
         },
-        publicPath: "/public",
+        publicPath: "/",
         stats: "errors-only",
         host: process.env.HOST,
         port: process.env.PORT,
