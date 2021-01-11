@@ -18,7 +18,7 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            url: (url) => !url.includes("images/")
+                            url: (url) => !url.includes("uploads/")
                         }
                     },
                     "postcss-loader",
