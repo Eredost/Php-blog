@@ -5,3 +5,28 @@
 body {
   background: $background-color;
 }
+
+p {
+  line-height: 1.65;
+  margin-bottom: 1em;
+}
+
+section {
+  padding: 2em 0;
+}
+
+section:nth-of-type(odd) {
+  background-color: $background-color-alt;
+}
+
+.section-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+@media all and (min-width: $breakpoint-medium) {
+  section {
+    padding: 3em 0;
+  }
+}
