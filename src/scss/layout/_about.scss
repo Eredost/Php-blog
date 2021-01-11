@@ -1,0 +1,15 @@
+.about {
+  & > .section-wrapper {
+    max-width: 750px;
+  }
+
+  & .button {
+    margin-top: 1em;
+  }
+
+  @media all and (min-width: $breakpoint-medium) {
+    & .button {
+      margin-top: 2em;
+    }
+  }
+}

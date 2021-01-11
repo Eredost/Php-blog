@@ -1,0 +1,12 @@
+.button {
+  display: inline-block;
+  color: $text-color-alt;
+  background-color: $brand-color;
+  padding: 0.8em 1.5em;
+  border: 1px solid $brand-color;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
