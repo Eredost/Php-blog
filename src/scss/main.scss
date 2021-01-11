@@ -2,13 +2,18 @@
 
 // Abstracts
 @import "abstracts/variables";
+
 // Vendors
 @import "~reset-css/sass/reset";
 @import "~font-awesome/scss/font-awesome";
+
 // Base
 @import "base/typographies";
 @import "base/base";
 
-//@import "layout/";
+// Layouts
+@import "layout/header";
 
-//@import "components/";
+// Components
+@import "components/logo";
+@import "components/navbar";
