@@ -58,6 +58,45 @@
     </div>
 </section>
 
+<section class="experiences">
+    <h2 class="section-title">Expériences</h2>
+
+    <div class="section-wrapper">
+        <div class="experience">
+            <div class="experience__date">
+                <time class="experience__date" datetime="2020-06">Juin 2020</time> -
+                <time class="experience__date" datetime="2020-06">Sep 2020</time>
+            </div>
+            <h3 class="experience__title">Développeur web</h3>
+            <p class="experience__company">OpenClassrooms</p>
+
+            <p class="experience__description">Utilisation du langage Javascript, du serveur NodeJS, du framework Express et des outils Sequelize et Mongoose. Amélioration du référencement de sites web existant.</p>
+        </div>
+
+        <div class="experience">
+            <div class="experience__date">
+                <time class="experience__date" datetime="2020-06">Juin 2020</time> -
+                <time class="experience__date" datetime="2020-06">Sep 2020</time>
+            </div>
+            <h3 class="experience__title">Développeur web</h3>
+            <p class="experience__company">OpenClassrooms</p>
+
+            <p class="experience__description">Utilisation du langage Javascript, du serveur NodeJS, du framework Express et des outils Sequelize et Mongoose. Amélioration du référencement de sites web existant.</p>
+        </div>
+
+        <div class="experience">
+            <div class="experience__date">
+                <time class="experience__date" datetime="2020-06">Juin 2020</time> -
+                <time class="experience__date" datetime="2020-06">Sep 2020</time>
+            </div>
+            <h3 class="experience__title">Développeur web</h3>
+            <p class="experience__company">OpenClassrooms</p>
+
+            <p class="experience__description">Utilisation du langage Javascript, du serveur NodeJS, du framework Express et des outils Sequelize et Mongoose. Amélioration du référencement de sites web existant.</p>
+        </div>
+    </div>
+</section>
+
 <?php
 
 $content = ob_get_clean();
