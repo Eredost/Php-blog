@@ -17,6 +17,8 @@
 @import "layout/about";
 @import "layout/services";
 @import "layout/experiences";
+@import "layout/form";
+@import "layout/contact";
 
 // Components
 @import "components/logo";
@@ -25,3 +27,5 @@
 @import "components/title";
 @import "components/service";
 @import "components/experience";
+@import "components/contact-info";
+@import "components/contact-form";
