@@ -72,7 +72,7 @@
         <div class="experience">
             <div class="experience__date">
                 <time class="experience__date" datetime="2020-06">Juin 2020</time> -
-                <time class="experience__date" datetime="2020-06">Sep 2020</time>
+                <time class="experience__date" datetime="2020-09">Sep 2020</time>
             </div>
             <h3 class="experience__title">Développeur web</h3>
             <p class="experience__company">OpenClassrooms</p>
@@ -82,24 +82,24 @@
 
         <div class="experience">
             <div class="experience__date">
-                <time class="experience__date" datetime="2020-06">Juin 2020</time> -
-                <time class="experience__date" datetime="2020-06">Sep 2020</time>
+                <time class="experience__date" datetime="2019-10">Oct 2019</time> -
+                <time class="experience__date" datetime="2019-11">Nov 2019</time>
             </div>
-            <h3 class="experience__title">Développeur web</h3>
-            <p class="experience__company">OpenClassrooms</p>
+            <h3 class="experience__title">Référent technique</h3>
+            <p class="experience__company">O'Clock</p>
 
-            <p class="experience__description">Utilisation du langage Javascript, du serveur NodeJS, du framework Express et des outils Sequelize et Mongoose. Amélioration du référencement de sites web existant.</p>
+            <p class="experience__description">Accompagnement de l'équipe de développement sur le choix des technologies à mettre en place ainsi que leur utilisation au sein du projet Cocorico World, place de marché pour les agriculteurs de toute la France.</p>
         </div>
 
         <div class="experience">
             <div class="experience__date">
-                <time class="experience__date" datetime="2020-06">Juin 2020</time> -
-                <time class="experience__date" datetime="2020-06">Sep 2020</time>
+                <time class="experience__date" datetime="2017-11">Nov 2017</time> -
+                <time class="experience__date" datetime="2018-03">Mars 2018</time>
             </div>
-            <h3 class="experience__title">Développeur web</h3>
+            <h3 class="experience__title">Développeur d'applications Python</h3>
             <p class="experience__company">OpenClassrooms</p>
 
-            <p class="experience__description">Utilisation du langage Javascript, du serveur NodeJS, du framework Express et des outils Sequelize et Mongoose. Amélioration du référencement de sites web existant.</p>
+            <p class="experience__description">Découverte du monde de la programmation et initiation aux langages du web, à l'algorithmique ainsi qu'au paradigme de programmation orienté objet. Réalisation de multiples projets avec le langage Python.</p>
         </div>
     </div>
 </section>
