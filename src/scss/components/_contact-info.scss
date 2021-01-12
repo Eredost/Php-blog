@@ -1,0 +1,27 @@
+.contact-info {
+  max-width: 320px;
+  margin: 0 auto 2em;
+
+  &__title {
+    font-size: 1.4em;
+    font-weight: 400;
+    margin-bottom: 1.5em;
+  }
+
+  &__block {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.3em;
+
+    & > i {
+      text-align: center;
+      font-size: 1.5em;
+      width: 30px;
+      margin-right: 0.5em;
+    }
+  }
+
+  @media all and (min-width: $breakpoint-medium) {
+    margin-right: 2em;
+  }
+}

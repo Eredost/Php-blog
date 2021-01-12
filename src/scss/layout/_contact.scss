@@ -1,0 +1,7 @@
+.contact {
+  @media all and (min-width: $breakpoint-medium) {
+    & .section-wrapper {
+      display: flex;
+    }
+  }
+}

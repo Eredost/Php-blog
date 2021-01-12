@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 
+<!-- Banner section -->
 <section class="banner">
     <div class="section-wrapper">
         <div class="banner__head">
@@ -13,7 +14,9 @@
         </div>
     </div>
 </section>
+<!-- Banner section END -->
 
+<!-- About section -->
 <section class="about">
     <h2 class="section-title">A propos</h2>
 
@@ -27,7 +30,9 @@
         </a>
     </div>
 </section>
+<!-- About section END -->
 
+<!-- Services section -->
 <section class="services">
     <h2 class="section-title">Services</h2>
 
@@ -57,7 +62,9 @@
         </div>
     </div>
 </section>
+<!-- Services section END -->
 
+<!-- Experiences section -->
 <section class="experiences">
     <h2 class="section-title">Expériences</h2>
 
@@ -96,6 +103,71 @@
         </div>
     </div>
 </section>
+<!-- Experiences section END -->
+
+<!-- Contact section -->
+<section class="contact" id="contact">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="section-wrapper">
+        <!-- Contact info -->
+        <div class="contact-info">
+            <h3 class="contact-info__title">Infos de contact</h3>
+
+            <div class="contact-info__block">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                Wizernes, France
+            </div>
+            <div class="contact-info__block">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                michael.coutin62@gmail.com
+            </div>
+            <div class="contact-info__block">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                +33 6 21 31 33 42
+            </div>
+            <div class="contact-info__block">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+                www.michael-dev.fr
+            </div>
+            <div class="contact-info__block">
+                <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                linkedin.com/in/michael-coutin/
+            </div>
+            <div class="contact-info__block">
+                <i class="fa fa-github" aria-hidden="true"></i>
+                github.com/Eredost
+            </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="contact-form">
+            <form class="form" action="" method="post">
+                <div class="form__group--flex">
+                    <div class="form__group">
+                        <label for="name" class="form__label">Nom <span class="required">*</span></label>
+                        <input name="name" id="name" type="text" class="form__input" placeholder="Votre nom">
+                    </div>
+                    <div class="form__group">
+                        <label for="email" class="form__label">Email <span class="required">*</span></label>
+                        <input name="email" id="email" type="email" class="form__input" placeholder="Votre email">
+                    </div>
+                </div>
+                <div class="form__group">
+                    <label for="subject" class="form__label">Sujet <span class="required">*</span></label>
+                    <input name="subject" id="subject" type="text" class="form__input" placeholder="Le sujet de votre message">
+                </div>
+                <div class="form__group">
+                    <label for="message" class="form__label">Message <span class="required">*</span></label>
+                    <textarea name="message" id="message" cols="30" rows="10" class="form__input" placeholder="Votre message"></textarea>
+                </div>
+
+                <input type="submit" value="Envoyer" class="button square">
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Contact section END -->
 
 <?php
 
