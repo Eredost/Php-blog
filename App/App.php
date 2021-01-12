@@ -85,5 +85,11 @@ final class App
             'Blog\Controllers\MainController#home',
             'homepage'
         );
+        $this->router->map(
+            'GET',
+            '/cv',
+            'Blog\Controllers\MainController#showCV',
+            'cv'
+        );
     }
 }

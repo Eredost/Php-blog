@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= htmlspecialchars(($title ?? 'Michaël Coutin - Développeur d\'applications')) ?></title>
+    <title><?= ($title ?? 'Michaël Coutin - Développeur d\'applications') ?></title>
 
     <link rel="stylesheet" href="main.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
@@ -14,15 +14,11 @@
 </head>
 <body>
 
-    <div>
-        <?php include('layouts/_header.tpl.php') ?>
+    <?php include('layouts/_header.tpl.php') ?>
 
-        <div>
-            <?= $content ?? '' ?>
-        </div>
+    <?= $content ?? '' ?>
 
-        <?php include('layouts/_footer.tpl.php') ?>
-    </div>
+    <?php include('layouts/_footer.tpl.php') ?>
 
     <script src="js/main.js" defer></script>
 </body>
