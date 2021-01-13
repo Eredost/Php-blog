@@ -4,6 +4,9 @@
 
 body {
   background: $background-color;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 p {
@@ -23,6 +26,10 @@ section:nth-of-type(odd) {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 10px;
+}
+
+.center {
+  text-align: center;
 }
 
 @media all and (min-width: $breakpoint-medium) {

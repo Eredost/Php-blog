@@ -91,5 +91,17 @@ final class App
             'Blog\Controllers\MainController#showCV',
             'cv'
         );
+        $this->router->map(
+            'GET',
+            '/mentions-legales',
+            'Blog\Controllers\MainController#legalMentions',
+            'legalMentions'
+        );
+        $this->router->map(
+            'GET',
+            '/politique-de-confidentialite',
+            'Blog\Controllers\MainController#privacyPolicy',
+            'privacyPolicy'
+        );
     }
 }

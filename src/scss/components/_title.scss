@@ -16,6 +16,12 @@
   }
 }
 
+.medium-title {
+  font-size: 1.3em;
+  font-weight: 400;
+  margin: 1.8em 0 1.1em;
+}
+
 @media all and (min-width: $breakpoint-medium) {
   .section-title {
     font-size: 2.8em;
