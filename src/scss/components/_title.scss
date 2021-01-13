@@ -18,8 +18,15 @@
 
 .medium-title {
   font-size: 1.3em;
-  font-weight: 400;
+  font-weight: 500;
   margin: 1.8em 0 1.1em;
+  line-height: 1.2;
+}
+
+.small-title {
+  font-size: 1.15em;
+  font-weight: 400;
+  margin: 1.8em 0 0.8em;
 }
 
 @media all and (min-width: $breakpoint-medium) {
