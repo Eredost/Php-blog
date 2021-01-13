@@ -9,14 +9,13 @@ This project consists of developing a professional blog, this one must allow on 
 
 **In order to run the project, you must have at least PHP version 7.3 as well as the Composer dependency manager.**
 
-1. First, you have to install the Composer dependencies
+ 1. First, you have to install the Composer dependencies
 
         > composer install
 
-2. Then, you need to create your database so that you can export the 'data/blog.sql' file containing the tables, and a set of fake data.
+ 2. Then, you need to create your database so that you can export the 'data/blog.sql' file containing the tables, and a set of fake data.
 
-
-3. And finally, you need to create a new configuration file 'database.conf' in the config folder, with 'database.dist.conf' for model containing the information relating to the connection to the database
+ 3. And finally, you need to create a new configuration file 'database.conf' in the config folder, with 'database.dist.conf' for model containing the information relating to the connection to the database
 
         // config/database.conf
         ; Database config
@@ -28,5 +27,5 @@ This project consists of developing a professional blog, this one must allow on 
 
 ## Additional docs
 
-- [Kanban (Trello)](https://trello.com/b/hIOdepqM/blog-php)
-- [Application mockups (Figma)](https://www.figma.com/file/f9XSRrlVWCuRx1RA6ROrlh/PHP-Blog?node-id=0%3A1)
+  - [Kanban (Trello)](https://trello.com/b/hIOdepqM/blog-php)
+  - [Application mockups (Figma)](https://www.figma.com/file/f9XSRrlVWCuRx1RA6ROrlh/PHP-Blog?node-id=0%3A1)
