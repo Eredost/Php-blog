@@ -39,9 +39,6 @@
         <p>Le site est accessible par tout endroit, 7j/7, 24h/24 sauf cas de force majeure, interruption programmée ou non et pouvant découlant d’une nécessité de maintenance.</p>
         <p>En cas de modification, interruption ou suspension des services le site Michael-dev ne saurait être tenu responsable.</p>
 
-        <h2 class="medium-title">Collecte des données</h2>
-        <p>Le site est exempté de déclaration à la Commission Nationale Informatique et Libertés (CNIL) dans la mesure où il ne collecte aucune donnée concernant les utilisateurs.</p>
-
         <h2 class="medium-title">Propriété intellectuelle</h2>
         <p>Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du site Michael-dev, sans autorisation de l’éditeur est prohibée et pourra entraînée des actions et poursuites judiciaires telles que notamment prévues par le Code de la propriété intellectuelle et le Code civil.</p>
     </div>
