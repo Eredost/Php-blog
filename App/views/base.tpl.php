@@ -12,11 +12,13 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
 </head>
-<body>
+<body class="body">
 
     <?php include('layouts/_header.tpl.php') ?>
 
-    <?= $content ?? '' ?>
+    <div>
+        <?= $content ?? '' ?>
+    </div>
 
     <?php include('layouts/_footer.tpl.php') ?>
 

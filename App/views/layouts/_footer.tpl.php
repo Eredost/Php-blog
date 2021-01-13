@@ -31,11 +31,11 @@
                 </li>
                 <span class="separator">|</span>
                 <li class="footer__link">
-                    <a href="#">Politique de confidentialité</a>
+                    <a href="<?= $templateVars['router']->generate('privacyPolicy') ?>">Politique de confidentialité</a>
                 </li>
                 <span class="separator">|</span>
                 <li class="footer__link">
-                    <a href="#">Mentions légales</a>
+                    <a href="<?= $templateVars['router']->generate('legalMentions') ?>">Mentions légales</a>
                 </li>
             </ul>
         </div>

@@ -1,11 +1,13 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1em 1.3em;
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em 1.3em;
+  }
 
   &__navbar-toggle {
     font-size: 1.8em;

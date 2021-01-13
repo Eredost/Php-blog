@@ -8,7 +8,17 @@ class MainController extends TemplateEngine
 {
     public function home()
     {
-        return $this->render('frontend' . DIRECTORY_SEPARATOR . 'homepage');
+        return $this->render('frontend/homepage');
+    }
+
+    public function legalMentions()
+    {
+        return $this->render('frontend/legalMentions');
+    }
+
+    public function privacyPolicy()
+    {
+        return $this->render('frontend/privacyPolicy');
     }
 
     public function showCV()
