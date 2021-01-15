@@ -4,18 +4,39 @@ namespace Blog\Utils;
 
 class Request
 {
-    public static function request()
+    /** @var array $post */
+    private $post;
+
+    /** @var array $get */
+    private $get;
+
+    /** @var array $server */
+    private $server;
+
+    public function __construct()
     {
-        return $_POST;
+        $this->post = $_POST;
+        $this->get = $_GET;
+        $this->server = $_SERVER;
     }
 
-    public static function baseURI()
+    public function query(): array
     {
-        return $_SERVER['BASE_URI'] ?? '';
+        return $this->get;
     }
 
-    public static function isMethod(string $method)
+    public function request(): array
     {
-        return $_SERVER['REQUEST_METHOD'] === strtoupper($method);
+        return $this->post;
+    }
+
+    public function baseURI(): string
+    {
+        return $this->server['BASE_URI'] ?? '';
+    }
+
+    public function isMethod(string $method): bool
+    {
+        return $this->server['REQUEST_METHOD'] === strtoupper($method);
     }
 }
