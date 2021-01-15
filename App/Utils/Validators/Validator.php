@@ -14,12 +14,12 @@ abstract class Validator
      *
      * @return bool
      */
-    abstract public function isValid($value);
+    abstract public function isValid($value): bool;
 
     /**
      * @return string|null
      */
-    public function getErrorMessage()
+    public function getErrorMessage(): ?string
     {
         return $this->errorMessage;
     }
@@ -27,7 +27,7 @@ abstract class Validator
     /**
      * @param string $errorMessage
      */
-    public function setErrorMessage(string $errorMessage)
+    public function setErrorMessage(string $errorMessage): void
     {
         $this->errorMessage = $errorMessage;
     }
