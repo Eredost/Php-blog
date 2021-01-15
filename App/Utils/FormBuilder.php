@@ -6,7 +6,7 @@ use Blog\Utils\Types\Field;
 
 abstract class FormBuilder
 {
-    /** @var object $entity */
+    /** @var object|null $entity */
     protected $entity;
 
     /** @var array $fields */
@@ -15,11 +15,30 @@ abstract class FormBuilder
     /**
      * FormBuilder constructor.
      *
-     * @param object $entity
+     * @param object|null $entity
      */
-    public function __construct(object $entity)
+    public function __construct(?object $entity = null)
     {
         $this->entity = $entity;
+        $this->buildForm();
+    }
+
+    /**
+     * Allows you to specify the fields to display with their associated options
+     * and validators
+     */
+    abstract protected function buildForm();
+
+    /**
+     * Retrieves the request and fills the form values with the data sent
+     */
+    public function handleRequest(array $request): void
+    {
+        foreach ($this->fields as $field) {
+            if (array_key_exists($field->getName(), $request)) {
+                $field->setValue($request[$field->getName()]);
+            }
+        }
     }
 
     /**
@@ -29,10 +48,11 @@ abstract class FormBuilder
      *
      * @return $this
      */
-    protected function add(Field $field)
+    protected function add(Field $field): FormBuilder
     {
-        $attr = 'get' . ucfirst($field->getName());
-        $field->setValue($this->entity->$attr());
+        if ($this->entity && method_exists($this->entity, 'get'.ucfirst($field->getName()))) {
+            $field->setValue($this->entity->{'get'.ucfirst($field->getName())}());
+        }
         $this->fields[] = $field;
 
         return $this;
@@ -43,12 +63,15 @@ abstract class FormBuilder
      *
      * @return string
      */
-    public function createView()
+    public function createView(): string
     {
-        foreach ($this->fields as $field) {
+        $view = '';
 
-            yield $field->buildWidget();
+        foreach ($this->fields as $field) {
+            $view .= $field->buildWidget();
         }
+
+        return $view;
     }
 
     /**
@@ -57,7 +80,7 @@ abstract class FormBuilder
      *
      * @return bool
      */
-    public function isValid()
+    public function isValid(): bool
     {
         $valid = true;
 
