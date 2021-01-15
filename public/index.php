@@ -5,5 +5,7 @@ use Blog\Utils\Request;
 
 require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
-$app = App::getInstance(Request::baseURI());
+$request = new Request();
+
+$app = App::getInstance($request->baseURI());
 $app->handleRequest();
