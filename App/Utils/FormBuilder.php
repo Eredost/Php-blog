@@ -44,16 +44,26 @@ abstract class FormBuilder
     /**
      * Allows the addition of a new input field
      *
-     * @param Field $field
+     * @param string $name      The name of the input used for the label and input tags
+     * @param string $fieldFQCN Full qualified class name in order to instantiate a new object
+     * @param array  $options   Option array for the input field
      *
      * @return $this
      */
-    protected function add(Field $field): FormBuilder
+    protected function add(string $name, string $fieldFQCN, array $options = []): FormBuilder
     {
+        $options['name'] = $name;
+        $field = new $fieldFQCN($options);
+
+        if (!$field instanceof Field) {
+
+            throw new \InvalidArgumentException('The input field ' . $name . ' must extends Field class');
+        }
+        $this->fields[] = $field;
+
         if ($this->entity && method_exists($this->entity, 'get'.ucfirst($field->getName()))) {
             $field->setValue($this->entity->{'get'.ucfirst($field->getName())}());
         }
-        $this->fields[] = $field;
 
         return $this;
     }
