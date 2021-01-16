@@ -81,6 +81,10 @@
   color: #f93154;
 }
 
+label {
+  line-height: 1.65;
+}
+
 @media all and (min-width: $breakpoint-small) {
   .form {
     &__group--flex {
