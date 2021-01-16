@@ -21,6 +21,12 @@ abstract class Field
     /** @var string $value */
     private $value;
 
+    /** @var string $placeholder */
+    private $placeholder;
+
+    /** @var boolean $required */
+    private $required;
+
     /** @var Validator[] $validators */
     private $validators = [];
 
@@ -35,6 +41,10 @@ abstract class Field
         if (!empty($options)) {
             $this->hydrate($options);
         }
+
+        if (empty($this->label)) {
+            $this->label = ucfirst($this->name);
+        }
     }
 
     /**
@@ -42,7 +52,7 @@ abstract class Field
      *
      * @return string
      */
-    abstract public function buildWidget();
+    abstract public function buildWidget(): string;
 
     public function isValid()
     {
@@ -55,20 +65,6 @@ abstract class Field
         }
 
         return true;
-    }
-
-    /**
-     * @param Validator[] $validators
-     *
-     * @return void
-     */
-    public function setValidators(array $validators): void
-    {
-        foreach ($validators as $validator) {
-            if ($validator instanceof Validator && !in_array($validator, $this->validators)) {
-                $this->validators[] = $validator;
-            }
-        }
     }
 
     /**
@@ -157,5 +153,59 @@ abstract class Field
     public function getValidators(): array
     {
         return $this->validators;
+    }
+
+    /**
+     * @param Validator[] $validators
+     *
+     * @return void
+     */
+    public function setValidators(array $validators): void
+    {
+        foreach ($validators as $validator) {
+            if ($validator instanceof Validator && !in_array($validator, $this->validators)) {
+                $this->validators[] = $validator;
+            }
+        }
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPlaceholder(): ?string
+    {
+        return $this->placeholder;
+    }
+
+    /**
+     * @param string $placeholder
+     *
+     * @return $this
+     */
+    public function setPlaceholder(string $placeholder): Field
+    {
+        $this->placeholder = $placeholder;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getRequired(): bool
+    {
+        return (bool) $this->required;
+    }
+
+    /**
+     * @param bool $required
+     *
+     * @return Field
+     */
+    public function setRequired(bool $required): Field
+    {
+        $this->required = $required;
+
+        return $this;
     }
 }

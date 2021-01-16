@@ -29,12 +29,12 @@
                 <li class="footer__link">
                     <a href="#">Administration</a>
                 </li>
-                <span class="separator">|</span>
                 <li class="footer__link">
+                    <span class="separator">|</span>
                     <a href="<?= $templateVars['router']->generate('privacyPolicy') ?>">Politique de confidentialité</a>
                 </li>
-                <span class="separator">|</span>
                 <li class="footer__link">
+                    <span class="separator">|</span>
                     <a href="<?= $templateVars['router']->generate('legalMentions') ?>">Mentions légales</a>
                 </li>
             </ul>
