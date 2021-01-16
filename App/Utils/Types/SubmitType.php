@@ -7,7 +7,7 @@ class SubmitType extends Field
     public function buildWidget(): string
     {
         return "
-            <input type='submit' value='{$this->getLabel()}' class='button square'>
+            <input type=\"submit\" value=\"{$this->getLabel()}\" class=\"button square\">
         ";
     }
 }

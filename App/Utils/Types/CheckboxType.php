@@ -25,31 +25,31 @@ class CheckboxType extends Field
 
             foreach ($this->choices as $id => $label) {
                 $checkboxes .= "
-                    <label class='form__checkbox' for='{$id}'>
-                        <input type='checkbox' name='{$this->getName()}' id='{$id}' value='{$id}'>
+                    <label class=\"form__checkbox\" for=\"{$id}\">
+                        <input type=\"checkbox\" name=\"{$this->getName()}\" id=\"{$id}\" value=\"{$id}\">
                         {$label}
-                        <span class='checkmark'></span>
+                        <span class=\"checkmark\"></span>
                     </label>
                 ";
             }
 
             return "
-                <fieldset class='form__group'>
-                    <legend class='form__label'>{$this->getLabel()} <span class='required'>{$requiredLabel}</span></legend>
+                <fieldset class=\"form__group\">
+                    <legend class=\"form__label\">{$this->getLabel()} <span class=\"required\">{$requiredLabel}</span></legend>
                     $checkboxes
-                    <p class='form__error'>{$this->getErrorMessage()}</p>
+                    <p class=\"form__error\">{$this->getErrorMessage()}</p>
                 </fieldset>
             ";
         }
 
         return "    
-            <div class='form__group'>
-                <label class='form__checkbox' for='{$this->getName()}'>
-                    <input type='checkbox' name='{$this->getName()}' id='{$this->getName()}'>
-                    {$this->getLabel()} <span class='required'>{$requiredLabel}</span>
-                    <span class='checkmark'></span>
+            <div class=\"form__group\">
+                <label class=\"form__checkbox\" for=\"{$this->getName()}\">
+                    <input type=\"checkbox\" name=\"{$this->getName()}\" id=\"{$this->getName()}\">
+                    {$this->getLabel()} <span class=\"required\">{$requiredLabel}</span>
+                    <span class=\"checkmark\"></span>
                 </label>    
-                    <p class='form__error'>{$this->getErrorMessage()}</p>
+                    <p class=\"form__error\">{$this->getErrorMessage()}</p>
             </div>
         ";
     }
