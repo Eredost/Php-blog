@@ -18,7 +18,7 @@ class CheckboxType extends Field
 
     public function buildWidget(): string
     {
-        $requiredLabel = $this->getRequired() ? '*' : '';
+        $requiredLabel = $this->isRequired() ? '*' : '';
 
         if (!empty($this->choices)) {
             $checkboxes = '';

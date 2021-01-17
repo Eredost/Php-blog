@@ -6,7 +6,7 @@ class EmailType extends Field
 {
     public function buildWidget(): string
     {
-        $requiredLabel = $this->getRequired() ? '*' : '';
+        $requiredLabel = $this->isRequired() ? '*' : '';
 
         return "
             <div class=\"form__group\">

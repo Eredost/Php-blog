@@ -66,7 +66,7 @@ class LengthValidator extends Validator
     }
 
     /**
-     * @param int $maxLength
+     * @param int|null $maxLength
      */
     private function setMaxLength(?int $maxLength)
     {
