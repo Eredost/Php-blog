@@ -15,16 +15,17 @@ class Mailer
      */
     public static function sendContactMessage(array $fields): bool
     {
-        $headers = 'From: hello@michael-dev.fr';
-        $content = '
+        $headers = "From: hello@michael-dev.fr";
+        $content = "
             <h1>Michael-dev</h1>
-            <p>Nouveau message d\'un utilisateur</p>
-        ';
+            <p>Nouveau message d'un utilisateur</p>
+        ";
 
         foreach ($fields as $fieldName => $value) {
-            $content .= '<h2>$fieldName</h2> 
-                <p>' . htmlspecialchars($value) . '</p>
-            ';
+            $content .= "
+                <h2>{$fieldName}</h2> 
+                <p>" . htmlspecialchars($value) . "</p>
+            ";
         }
 
         return mail(self::ADMIN_EMAIL, 'Nouveau message', '$content', $headers);
