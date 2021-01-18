@@ -1,0 +1,35 @@
+.alert {
+  position: relative;
+  padding: 1.3em 1em 1em;
+  color: #fff;
+  margin-bottom: 1em;
+  border-radius: 7px;
+  opacity: 1;
+  transition: opacity $duration-fast;
+
+  & > p {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  &__closer {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 1.2em;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  &.success {
+    background-color: $success-color;
+  }
+
+  &.error {
+    background-color: $warning-color;
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}

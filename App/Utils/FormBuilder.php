@@ -89,6 +89,24 @@ abstract class FormBuilder
     }
 
     /**
+     * Allows the retrieval of all the values of the input fields
+     *
+     * @return array
+     */
+    public function getValues(): array
+    {
+        $values = [];
+
+        foreach ($this->fields as $field) {
+            if (!empty($field->getValue())) {
+                $values[$field->getLabel()] = $field->getValue();
+            }
+        }
+
+        return $values;
+    }
+
+    /**
      * Generate the view from the input fields
      *
      * @return string

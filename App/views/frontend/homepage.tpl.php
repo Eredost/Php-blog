@@ -142,6 +142,20 @@
 
         <!-- Contact form -->
         <div class="contact-form">
+
+            <?php
+            if ($flashMessages = $templateVars['request']->getFlashMessage(['success', 'error'])) {
+                foreach ($flashMessages as $key => $message) {
+            ?>
+                    <div class="alert <?= $key ?>">
+                        <i class="fa fa-times alert__closer" aria-hidden="true"></i>
+                        <p><?= $message ?></p>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+
             <form class="form" action="<?= $templateVars['router']->generate('homepage').'#contact' ?>" method="post">
                 <?= $templateVars['contactForm'] ?>
             </form>
