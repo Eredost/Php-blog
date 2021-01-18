@@ -19,7 +19,7 @@ let app = {
     handleAlertClose(event) {
         let divElement = event.currentTarget.parentNode;
 
-        divElement.classList.add('hidden');
+        divElement.classList.add("hidden");
         setTimeout(function () {
             divElement.remove();
         }, 300);
