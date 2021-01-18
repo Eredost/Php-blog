@@ -12,7 +12,7 @@ class TextAreaType extends Field
         return "
             <div class=\"form__group\">
                 <label for=\"{$this->getName()}\" class=\"form__label\">{$this->getLabel()} <span class=\"required\">{$requiredLabel}</span></label>
-                <textarea name=\"{$this->getName()}\" id=\"{$this->getName()}\" cols=\"30\" rows=\"10\" class=\"form__input\" placeholder=\"{$this->getPlaceholder()}\"></textarea>
+                <textarea name=\"{$this->getName()}\" id=\"{$this->getName()}\" cols=\"30\" rows=\"10\" class=\"form__input\" placeholder=\"{$this->getPlaceholder()}\">{$this->getValue()}</textarea>
                 {$errorMessage}
             </div>
         ";

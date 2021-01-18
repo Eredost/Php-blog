@@ -18,6 +18,16 @@ abstract class TemplateEngine
     }
 
     /**
+     * Modify the HTTP Location header to redirect the client
+     *
+     * @param string $url
+     */
+    public function redirect(string $url)
+    {
+        header('Location: ' . $url);
+    }
+
+    /**
      * Allows rendering a template from a controller
      *
      * @param string $templateName The name of the template to display
