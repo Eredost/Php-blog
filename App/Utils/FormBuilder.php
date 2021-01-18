@@ -9,7 +9,7 @@ abstract class FormBuilder
     /** @var object|null $entity */
     protected $entity;
 
-    /** @var array $fields */
+    /** @var Field[] $fields */
     protected $fields = [];
 
     /**
@@ -31,6 +31,8 @@ abstract class FormBuilder
 
     /**
      * Retrieves the request and fills the form values with the data sent
+     *
+     * @param array $request
      */
     public function handleRequest(array $request): void
     {
@@ -59,13 +61,31 @@ abstract class FormBuilder
 
             throw new \InvalidArgumentException('The input field ' . $name . ' must extends Field class');
         }
-        $this->fields[] = $field;
+        $this->fields[$name] = $field;
 
         if ($this->entity && method_exists($this->entity, 'get'.ucfirst($field->getName()))) {
             $field->setValue($this->entity->{'get'.ucfirst($field->getName())}());
         }
 
         return $this;
+    }
+
+    /**
+     * Allows the retrieval of a value of an input field of the form according to the
+     * name of this one
+     *
+     * @param string $name The name of the input field
+     *
+     * @return string|null
+     */
+    public function get(string $name): ?string
+    {
+        if (array_key_exists($name, $this->fields)) {
+
+            return $this->fields[$name]->getValue();
+        }
+
+        return null;
     }
 
     /**

@@ -142,27 +142,8 @@
 
         <!-- Contact form -->
         <div class="contact-form">
-            <form class="form" action="" method="post">
-                <div class="form__group--flex">
-                    <div class="form__group">
-                        <label for="name" class="form__label">Nom <span class="required">*</span></label>
-                        <input name="name" id="name" type="text" class="form__input" placeholder="Votre nom">
-                    </div>
-                    <div class="form__group">
-                        <label for="email" class="form__label">Email <span class="required">*</span></label>
-                        <input name="email" id="email" type="email" class="form__input" placeholder="Votre email">
-                    </div>
-                </div>
-                <div class="form__group">
-                    <label for="subject" class="form__label">Sujet <span class="required">*</span></label>
-                    <input name="subject" id="subject" type="text" class="form__input" placeholder="Le sujet de votre message">
-                </div>
-                <div class="form__group">
-                    <label for="message" class="form__label">Message <span class="required">*</span></label>
-                    <textarea name="message" id="message" cols="30" rows="10" class="form__input" placeholder="Votre message"></textarea>
-                </div>
-
-                <input type="submit" value="Envoyer" class="button square">
+            <form class="form" action="<?= $templateVars['router']->generate('homepage').'#contact' ?>" method="post">
+                <?= $templateVars['contactForm'] ?>
             </form>
         </div>
     </div>

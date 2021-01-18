@@ -19,6 +19,7 @@ class CheckboxType extends Field
     public function buildWidget(): string
     {
         $requiredLabel = $this->isRequired() ? '*' : '';
+        $errorMessage = $this->getErrorMessage() ? "<p class=\"form__error\">{$this->getErrorMessage()}</p>" : "";
 
         if (!empty($this->choices)) {
             $checkboxes = '';
@@ -37,7 +38,7 @@ class CheckboxType extends Field
                 <fieldset class=\"form__group\">
                     <legend class=\"form__label\">{$this->getLabel()} <span class=\"required\">{$requiredLabel}</span></legend>
                     $checkboxes
-                    <p class=\"form__error\">{$this->getErrorMessage()}</p>
+                    {$errorMessage}
                 </fieldset>
             ";
         }
@@ -49,7 +50,7 @@ class CheckboxType extends Field
                     {$this->getLabel()} <span class=\"required\">{$requiredLabel}</span>
                     <span class=\"checkmark\"></span>
                 </label>    
-                    <p class=\"form__error\">{$this->getErrorMessage()}</p>
+                {$errorMessage}
             </div>
         ";
     }

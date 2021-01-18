@@ -80,7 +80,7 @@ final class App
     private function initRouter()
     {
         $this->router->map(
-            'GET',
+            'GET|POST',
             '/',
             'Blog\Controllers\MainController#home',
             'homepage'
