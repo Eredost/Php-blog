@@ -2,4 +2,24 @@
   max-width: 720px;
   margin: 0 auto;
   flex-shrink: 1;
+
+  & > form {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > .form__group {
+      width: 100%;
+    }
+  }
+
+  @media all and (min-width: $breakpoint-small) {
+    & .form__group:nth-of-type(1),
+    & .form__group:nth-of-type(2) {
+      width: 45%;
+    }
+
+    & .form__group:nth-of-type(2) {
+      margin-left: auto;
+    }
+  }
 }

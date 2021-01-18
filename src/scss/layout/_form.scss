@@ -20,7 +20,7 @@
   }
 
   &__error {
-    margin-top: 0.2em;
+    margin: 0.2em 0 0;
     color: $warning-color;
   }
 
@@ -83,17 +83,4 @@
 
 label {
   line-height: 1.65;
-}
-
-@media all and (min-width: $breakpoint-small) {
-  .form {
-    &__group--flex {
-      display: flex;
-      justify-content: space-between;
-
-      & .form__group {
-        width: 45%;
-      }
-    }
-  }
 }
