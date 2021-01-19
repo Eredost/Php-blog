@@ -1,0 +1,46 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  &__body,
+  &__footer {
+    border: 2px solid #ccc;
+    border-radius: 7px;
+    background-color: #fff;
+    padding: 1em;
+  }
+
+  &__body {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    max-width: 450px;
+  }
+
+  &__title {
+    font-size: 1.45em;
+    margin-bottom: 0.8em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__footer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    text-align: center;
+    margin-top: 1em;
+
+    & > p {
+      margin-bottom: 0;
+    }
+
+    & a {
+      color: $brand-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

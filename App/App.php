@@ -115,5 +115,11 @@ final class App
             'Blog\Controllers\SecurityController#login',
             'login'
         );
+        $this->router->map(
+            'GET',
+            '/deconnexion',
+            'Blog\Controllers\SecurityController#disconnect',
+            'disconnect'
+        );
     }
 }
