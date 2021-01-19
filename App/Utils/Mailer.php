@@ -28,6 +28,6 @@ class Mailer
             ";
         }
 
-        return mail(self::ADMIN_EMAIL, 'Nouveau message', '$content', $headers);
+        return mail(self::ADMIN_EMAIL, 'Nouveau message', $content, $headers);
     }
 }

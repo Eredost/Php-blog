@@ -103,5 +103,17 @@ final class App
             'Blog\Controllers\MainController#privacyPolicy',
             'privacyPolicy'
         );
+        $this->router->map(
+            'GET|POST',
+            '/inscription',
+            'Blog\Controllers\SecurityController#signup',
+            'signup'
+        );
+        $this->router->map(
+            'GET|POST',
+            '/connexion',
+            'Blog\Controllers\SecurityController#login',
+            'login'
+        );
     }
 }
