@@ -17,7 +17,7 @@ class LoginForm extends FormBuilder
             'required'   => true,
             'validators' => [
                 new NotBlankValidator([
-                    'message' => 'Vous devez fournir un email'
+                    'message' => 'Vous devez renseigner un email'
                 ]),
                 new EmailValidator(),
                 new LengthValidator([
@@ -31,7 +31,7 @@ class LoginForm extends FormBuilder
                 'required'   => true,
                 'validators' => [
                     new NotBlankValidator([
-                        'message' => 'Vous devez fournir un mot de passe',
+                        'message' => 'Vous devez renseigner un mot de passe',
                     ]),
                     new LengthValidator([
                         'minLength'  => 8,

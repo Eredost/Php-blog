@@ -16,9 +16,7 @@
 
     <?php include('layouts/_header.tpl.php') ?>
 
-    <div>
-        <?= $content ?? '' ?>
-    </div>
+    <?= $content ?? '' ?>
 
     <?php include('layouts/_footer.tpl.php') ?>
 

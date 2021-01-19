@@ -32,6 +32,10 @@ section:nth-of-type(odd) {
   text-align: center;
 }
 
+.page {
+  flex-grow: 1;
+}
+
 @media all and (min-width: $breakpoint-medium) {
   section {
     padding: 3em 0;

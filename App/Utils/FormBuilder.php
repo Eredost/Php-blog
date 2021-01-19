@@ -61,10 +61,15 @@ abstract class FormBuilder
 
             throw new \InvalidArgumentException('The input field ' . $name . ' must extends Field class');
         }
-        $this->fields[$name] = $field;
 
-        if ($this->entity && method_exists($this->entity, 'get'.ucfirst($field->getName()))) {
-            $field->setValue($this->entity->{'get'.ucfirst($field->getName())}());
+        $this->fields[$name] = $field;
+        $getMethod = 'get'.ucfirst($field->getName());
+
+        if ($this->entity
+            && method_exists($this->entity, $getMethod)
+            && !empty($this->entity->{$getMethod}())) {
+
+            $field->setValue($this->entity->{$getMethod}());
         }
 
         return $this;

@@ -19,7 +19,7 @@ class SignupForm extends FormBuilder
             'required'   => true,
             'validators' => [
                 new NotBlankValidator([
-                    'message' => 'Vous devez fournir un email'
+                    'message' => 'Vous devez renseigner un email'
                 ]),
                 new EmailValidator(),
                 new LengthValidator([
@@ -33,7 +33,7 @@ class SignupForm extends FormBuilder
                 'required'   => true,
                 'validators' => [
                     new NotBlankValidator([
-                        'message' => 'Vous devez fournir un nom d\'utilisateur'
+                        'message' => 'Vous devez renseigner un nom d\'utilisateur'
                     ]),
                     new LengthValidator([
                         'minLength'  => 3,
@@ -48,7 +48,7 @@ class SignupForm extends FormBuilder
                 'required'   => true,
                 'validators' => [
                     new NotBlankValidator([
-                        'message' => 'Vous devez fournir un mot de passe',
+                        'message' => 'Vous devez renseigner un mot de passe',
                     ]),
                     new LengthValidator([
                         'minLength'  => 8,

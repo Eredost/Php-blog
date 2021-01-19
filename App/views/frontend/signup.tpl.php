@@ -1,8 +1,8 @@
 <?php ob_start(); ?>
 
-<section>
+<section class="signup">
     <div class="section-wrapper">
-        <div class="signup">
+        <div>
             <div class="signup__body">
 
                 <h1 class="signup__title">
@@ -10,12 +10,22 @@
                 </h1>
 
                 <form action="<?= $templateVars['router']->generate('signup') ?>" method="post">
-
+                    <?= $templateVars['signupForm'] ?>
+                    <p class="signup__agree-terms">
+                        En cliquant sur Accepter et s'inscrire, vous acceptez les
+                        <a href="#">Conditions d'utilisation</a>
+                        , la <a href="<?= $templateVars['router']->generate('privacyPolicy') ?>">Politique de confidentialité</a>
+                        et la <a href="#">Politique relative aux cookies</a> du site
+                    </p>
+                    <input class="button square full-width" type="submit" value="Accepter et s'inscrire">
                 </form>
             </div>
 
             <div class="signup__footer">
-
+                <p>
+                    Vous avez déjà un compte ?
+                    <a href="<?= $templateVars['router']->generate('login') ?>">Connectez vous</a>
+                </p>
             </div>
         </div>
     </div>
