@@ -16,8 +16,9 @@ class SignupForm extends FormBuilder
     protected function buildForm()
     {
         $this->add('email', EmailType::class, [
-            'required'   => true,
-            'validators' => [
+            'placeholder' => 'Votre email',
+            'required'    => true,
+            'validators'  => [
                 new NotBlankValidator([
                     'message' => 'Vous devez renseigner un email'
                 ]),
@@ -29,9 +30,10 @@ class SignupForm extends FormBuilder
             ],
         ])
             ->add('username', TextType::class, [
-                'label'      => 'Nom d\'utilisateur',
-                'required'   => true,
-                'validators' => [
+                'placeholder' => 'Votre nom d\'utilisateur',
+                'label'       => 'Nom d\'utilisateur',
+                'required'    => true,
+                'validators'  => [
                     new NotBlankValidator([
                         'message' => 'Vous devez renseigner un nom d\'utilisateur'
                     ]),
@@ -44,9 +46,10 @@ class SignupForm extends FormBuilder
                 ],
             ])
             ->add('password', PasswordType::class, [
-                'label'      => 'Mot de passe',
-                'required'   => true,
-                'validators' => [
+                'placeholder' => '********',
+                'label'       => 'Mot de passe',
+                'required'    => true,
+                'validators'  => [
                     new NotBlankValidator([
                         'message' => 'Vous devez renseigner un mot de passe',
                     ]),

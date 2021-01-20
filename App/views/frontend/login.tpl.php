@@ -6,9 +6,24 @@
             <div class="login__body">
 
                 <h1 class="login__title">Connexion</h1>
+
+                <?php
+                if ($flashMessages = $templateVars['request']->getFlashMessage(['error'])):
+                    foreach ($flashMessages as $key => $message):
+                        ?>
+                        <div class="alert <?= $key ?>">
+                            <i class="fa fa-times alert__closer" aria-hidden="true"></i>
+                            <p><?= $message ?></p>
+                        </div>
+                    <?php
+                    endforeach;
+                endif;
+                ?>
                 
                 <form action="<?= $templateVars['router']->generate('login') ?>" method="post">
+
                     <?= $templateVars['loginForm'] ?>
+
                     <input class="button square full-width" type="submit" value="Se connecter">
                 </form>
             </div>

@@ -16,15 +16,23 @@
                 <li class="navbar__item">
                     <a href="#" class="navbar__link">Blog</a>
                 </li>
-                <li class="navbar__item">
-                    <a href="<?= $templateVars['router']->generate('login') ?>" class="navbar__link">Connexion</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="<?= $templateVars['router']->generate('signup') ?>" class="navbar__link">Inscription</a>
-                </li>
-                <li class="navbar__item">
-                    <a href="<?= $templateVars['router']->generate('disconnect') ?>" class="navbar__link">Déconnexion</a>
-                </li>
+
+                <?php if ($templateVars['request']->isAuthenticated()): ?>
+
+                    <li class="navbar__item">
+                        <a href="<?= $templateVars['router']->generate('disconnect') ?>" class="navbar__link">Déconnexion</a>
+                    </li>
+
+                <?php else: ?>
+
+                    <li class="navbar__item">
+                        <a href="<?= $templateVars['router']->generate('login') ?>" class="navbar__link">Connexion</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="<?= $templateVars['router']->generate('signup') ?>" class="navbar__link">Inscription</a>
+                    </li>
+
+                <?php endif; ?>
             </ul>
         </nav>
     </div>

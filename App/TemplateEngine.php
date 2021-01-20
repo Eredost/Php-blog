@@ -2,19 +2,26 @@
 
 namespace Blog;
 
+use Blog\Utils\Request;
+
 abstract class TemplateEngine
 {
     /** @var \AltoRouter $router */
     protected $router;
 
+    /** @var Request $request */
+    protected $request;
+
     /**
      * TemplateEngine constructor.
      *
      * @param \AltoRouter $router
+     * @param Request     $request
      */
-    public function __construct(\AltoRouter $router)
+    public function __construct(\AltoRouter $router, Request $request)
     {
         $this->router = $router;
+        $this->request = $request;
     }
 
     /**
@@ -36,6 +43,7 @@ abstract class TemplateEngine
     public function render(string $templateName, array $templateVars = [])
     {
         $templateVars['router'] = $this->router;
+        $templateVars['request'] = $this->request;
 
         include __DIR__ . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $templateName . '.tpl.php';
     }

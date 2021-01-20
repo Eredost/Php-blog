@@ -2,6 +2,8 @@
 
 namespace Blog\Utils;
 
+use Blog\Models\User;
+
 class Request
 {
     /** @var array $post */
@@ -99,5 +101,57 @@ class Request
         }
 
         return $messages;
+    }
+
+    /**
+     * Checks if the user is present in the SESSION superglobal and therefore
+     * connected to the application
+     *
+     * @return bool
+     */
+    public function isAuthenticated(): bool
+    {
+        return isset($this->session, $this->session['user'])
+            && $this->session['user'] instanceof User
+        ;
+    }
+
+    /**
+     * Retrieves the user logged in to the application
+     *
+     * @return User|null Object representing the current user
+     */
+    public function getCurrentUser(): ?User
+    {
+        if ($this->isAuthenticated()) {
+
+            return $this->session['user'];
+        }
+
+        return null;
+    }
+
+    /**
+     * Check if the user has the role
+     *
+     * @param string $role
+     *
+     * @return bool
+     */
+    public function isGranted(string $role): bool
+    {
+        $user = $this->getCurrentUser();
+
+        return $user
+            && in_array($role, json_decode($user->getRole()))
+        ;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setCurrentUser(User $user): void
+    {
+        $this->session['user'] = $user;
     }
 }

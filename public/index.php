@@ -7,7 +7,5 @@ require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR 
 
 session_start();
 
-$request = new Request();
-
-$app = App::getInstance($request->baseURI());
+$app = App::getInstance();
 $app->handleRequest();
