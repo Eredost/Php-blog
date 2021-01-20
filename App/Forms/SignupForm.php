@@ -10,6 +10,7 @@ use Blog\Utils\Validators\EmailValidator;
 use Blog\Utils\Validators\LengthValidator;
 use Blog\Utils\Validators\NotBlankValidator;
 use Blog\Utils\Validators\PasswordValidator;
+use Blog\Utils\Validators\UniqueValidator;
 
 class SignupForm extends FormBuilder
 {
@@ -27,6 +28,12 @@ class SignupForm extends FormBuilder
                     'maxLength'  => 255,
                     'maxMessage' => 'L\'email ne peut pas dépasser %d caractères'
                 ]),
+                new UniqueValidator([
+                    'classFQCN'  => 'Blog\Models\UserManager',
+                    'method'     => 'findUserBy',
+                    'columnName' => 'email',
+                    'message'    => 'Cette email est déjà utilisé',
+                ]),
             ],
         ])
             ->add('username', TextType::class, [
@@ -42,7 +49,13 @@ class SignupForm extends FormBuilder
                         'maxLength'  => 40,
                         'minMessage' => 'Votre nom d\'utilisateur doit comporter au minimum %d caractères',
                         'maxMessage' => 'Votre nom d\'utilisateur doit comporter au maximum %d caractères',
-                    ])
+                    ]),
+                    new UniqueValidator([
+                        'classFQCN'  => 'Blog\Models\UserManager',
+                        'method'     => 'findUserBy',
+                        'columnName' => 'username',
+                        'message'    => 'Ce nom d\'utilisateur est déjà utilisé',
+                    ]),
                 ],
             ])
             ->add('password', PasswordType::class, [
@@ -59,7 +72,7 @@ class SignupForm extends FormBuilder
                         'minMessage' => 'Votre mot de passe doit contenir au minimum %d caractères',
                         'maxMessage' => 'Votre mot de passe doit contenir au maximum %d caractères',
                     ]),
-                    new PasswordValidator()
+                    new PasswordValidator(),
                 ],
             ])
         ;

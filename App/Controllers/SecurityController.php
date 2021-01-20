@@ -34,12 +34,19 @@ class SecurityController extends TemplateEngine
 
     public function signup()
     {
-        $user = new User();
-        $signupForm = new SignupForm($user);
+        $signupForm = new SignupForm();
         $signupForm->handleRequest($this->request->request());
 
         if ($this->request->isMethod('post') && $signupForm->isValid()) {
-            // TODO: Implement signup form submit
+            $user = (new User())
+                ->setEmail($signupForm->get('email'))
+                ->setUsername($signupForm->get('username'))
+                ->setPassword(password_hash($signupForm->get('password'), PASSWORD_DEFAULT))
+            ;
+            $user->save();
+            $this->request->setCurrentUser($user);
+
+            return $this->redirect($this->router->generate('homepage'));
         }
 
         return $this->render('frontend/signup', [
