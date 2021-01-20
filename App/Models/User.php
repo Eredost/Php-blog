@@ -27,6 +27,9 @@ class User extends UserManager
 
     public function __construct(array $data = [])
     {
+        $this->createdAt = (new \DateTime())->format('Y-m-d H:i:s');
+        $this->role = json_encode(['ROLE_USER']);
+
         $this->hydrate($data);
     }
 

@@ -46,4 +46,26 @@ abstract class UserManager extends AbstractManager
 
         return $request->fetchObject(User::class);
     }
+
+    /**
+     * Finds a user by column name and value
+     *
+     * @param string $column The name of the table column
+     * @param string $needle Value to look for
+     *
+     * @return mixed
+     */
+    public static function findUserBy(string $column, string $needle)
+    {
+        $sql = "
+            SELECT {$column}
+                FROM user 
+                WHERE {$column} = ?;
+        ";
+        $pdo = DBData::getDBH();
+        $request = $pdo->prepare($sql);
+        $request->execute([$needle]);
+
+        return $request->fetchObject(User::class);
+    }
 }
