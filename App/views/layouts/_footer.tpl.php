@@ -26,15 +26,20 @@
         <div class="footer__nav">
             <p class="footer__copyrights">Copyright © 2020</p>
             <ul class="footer__links">
+
+                <?php if ($templateVars['request']->isGranted('ROLE_ADMIN')): ?>
+
+                    <li class="footer__link">
+                        <a href="#">Administration</a>
+                        <span class="separator">|</span>
+                    </li>
+                <?php endif; ?>
+
                 <li class="footer__link">
-                    <a href="#">Administration</a>
-                </li>
-                <li class="footer__link">
-                    <span class="separator">|</span>
                     <a href="<?= $templateVars['router']->generate('privacyPolicy') ?>">Politique de confidentialité</a>
+                    <span class="separator">|</span>
                 </li>
                 <li class="footer__link">
-                    <span class="separator">|</span>
                     <a href="<?= $templateVars['router']->generate('legalMentions') ?>">Mentions légales</a>
                 </li>
             </ul>

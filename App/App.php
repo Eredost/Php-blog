@@ -3,11 +3,15 @@
 namespace Blog;
 
 use \AltoRouter;
+use Blog\Utils\Request;
 
 final class App
 {
     /** @var AltoRouter $router */
     private $router;
+
+    /** @var Request $request */
+    private $request;
 
     /** @var App $instance */
     private static $instance;
@@ -15,30 +19,27 @@ final class App
     /**
      * App constructor.
      *
-     * @param string $baseURI The base URI of the application
-     *
      * @throws \Exception
      */
-    private function __construct(string $baseURI)
+    private function __construct()
     {
         $this->router = new AltoRouter();
-        $this->router->setBasePath($baseURI);
+        $this->request = new Request();
+        $this->router->setBasePath($this->request->baseURI());
         $this->initRouter();
     }
 
     /**
      * Singleton method
      *
-     * @param string $baseURI The base URI of the application
-     *
      * @return App
      *
      * @throws \Exception
      */
-    public static function getInstance(string $baseURI)
+    public static function getInstance()
     {
         if (empty(self::$instance)) {
-            self::$instance = new self($baseURI);
+            self::$instance = new self();
         }
 
         return self::$instance;
@@ -66,7 +67,7 @@ final class App
         $controllerName = $controllerInfo[0];
         $methodName = $controllerInfo[1];
 
-        $controller = new $controllerName($this->router);
+        $controller = new $controllerName($this->router, $this->request);
         $controller->$methodName($match['params']);
     }
 

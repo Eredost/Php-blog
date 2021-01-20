@@ -10,7 +10,9 @@
                 </h1>
 
                 <form action="<?= $templateVars['router']->generate('signup') ?>" method="post">
+
                     <?= $templateVars['signupForm'] ?>
+
                     <p class="signup__agree-terms">
                         En cliquant sur Accepter et s'inscrire, vous acceptez les
                         <a href="#">Conditions d'utilisation</a>

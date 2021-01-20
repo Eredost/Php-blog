@@ -5,19 +5,26 @@ namespace Blog\Controllers;
 use Blog\Forms\LoginForm;
 use Blog\Forms\SignupForm;
 use Blog\Models\User;
+use Blog\Models\UserManager;
 use Blog\TemplateEngine;
-use Blog\Utils\Request;
 
 class SecurityController extends TemplateEngine
 {
     public function login()
     {
-        $request = new Request();
         $loginForm = new LoginForm();
-        $loginForm->handleRequest($request->request());
+        $loginForm->handleRequest($this->request->request());
 
-        if ($request->isMethod('post') && $loginForm->isValid()) {
-            // TODO: Implement login form submit
+        if ($this->request->isMethod('post') && $loginForm->isValid()) {
+            $user = UserManager::findUserByEmail($loginForm->get('email'));
+
+            if (!empty($user) && password_verify($loginForm->get('password'), $user->getPassword())) {
+                $this->request->setCurrentUser($user);
+
+                return $this->redirect($this->router->generate('homepage'));
+            }
+
+            $this->request->addFlashMessage('error', 'Les informations d\'identification sont invalides');
         }
 
         return $this->render('frontend/login', [
@@ -27,12 +34,11 @@ class SecurityController extends TemplateEngine
 
     public function signup()
     {
-        $request = new Request();
         $user = new User();
         $signupForm = new SignupForm($user);
-        $signupForm->handleRequest($request->request());
+        $signupForm->handleRequest($this->request->request());
 
-        if ($request->isMethod('post') && $signupForm->isValid()) {
+        if ($this->request->isMethod('post') && $signupForm->isValid()) {
             // TODO: Implement signup form submit
         }
 
