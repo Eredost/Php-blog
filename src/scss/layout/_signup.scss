@@ -4,6 +4,14 @@
   align-items: center;
   flex-grow: 1;
 
+  & a {
+    color: $brand-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   &__body,
   &__footer {
     border: 2px solid #ccc;
@@ -32,11 +40,6 @@
 
     & > a {
       font-size: 14px;
-      color: $brand-color;
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
 
@@ -48,14 +51,6 @@
 
     & > p {
       margin-bottom: 0;
-    }
-
-    & a {
-      color: $brand-color;
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
 }
