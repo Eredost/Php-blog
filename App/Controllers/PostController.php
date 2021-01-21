@@ -2,12 +2,22 @@
 
 namespace Blog\Controllers;
 
+use Blog\Models\PostManager;
 use Blog\TemplateEngine;
 
 class PostController extends TemplateEngine
 {
     public function articleList()
     {
-        return $this->render('frontend/blog');
+        $posts = PostManager::findAllPostWithAuthorAndCommentCount();
+
+        return $this->render('frontend/blog', [
+            'posts' => $posts
+        ]);
+    }
+
+    public function articleShow()
+    {
+
     }
 }

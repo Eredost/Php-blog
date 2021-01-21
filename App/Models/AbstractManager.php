@@ -34,11 +34,11 @@ abstract class AbstractManager
         $tableFields = implode(', ', static::TABLE_FIELDS);
         $className = preg_replace('/Manager$/', '', static::class);
 
-        $pdo = DBData::getDBH();
         $sql = "
             SELECT {$tableFields}
                 FROM {$tableName};
         ";
+        $pdo = DBData::getDBH();
         $request = $pdo->query($sql);
 
         return $request->fetchAll(\PDO::FETCH_CLASS, $className);
