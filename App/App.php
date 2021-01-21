@@ -128,5 +128,11 @@ final class App
             'Blog\Controllers\PostController#articleList',
             'articleList'
         );
+        $this->router->map(
+            'GET|POST',
+            '/blog/[i:id]',
+            'Blog\Controllers\PostController#articleShow',
+            'articleShow'
+        );
     }
 }

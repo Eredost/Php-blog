@@ -17,148 +17,53 @@
         <div class="section-wrapper">
             <div class="blog__content">
 
-                <div class="article-card">
-                    <a class="article-card__image" href="#">
-                        <time class="article-card__publication-date" datetime="01-04">04 <span>Janv</span></time>
-                        <img src="uploads/oclock.png" alt="">
-                    </a>
+                <?php foreach($templateVars['posts'] as $post): ?>
 
-                    <div class="article-card__body">
-                        <div class="article-card__icons">
-                            <div>
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                Michaël
+                    <div class="article-card">
+                        <a class="article-card__image" href="<?= $templateVars['router']->generate('articleShow', ['id' => $post->getId()]) ?>">
+                            <time class="article-card__publication-date" datetime="<?= (new DateTime($post->getCreatedAt()))->format('Y-m-d') ?>">
+                                <?=
+                                preg_replace_callback('/\/(\d{1,2})/', function($matches) {
+                                    return '<span>' . numberToAbbrMonthName($matches[1]) . '</span>';
+                                }, (new DateTime($post->getCreatedAt()))->format('d /n'))
+                                ?>
+                            </time>
+                            <img src="<?= $post->getImage() ?>" alt="">
+                        </a>
+
+                        <div class="article-card__body">
+                            <div class="article-card__icons">
+                                <div>
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <?= $post->username ?>
+                                </div>
+                                <div>
+                                    <i class="fa fa-comment" aria-hidden="true"></i>
+                                    <?= ($post->commentCount > 0 ? $post->commentCount . ' commentaire(s)': 'Pas de commentaires') ?>
+                                </div>
+                                <div>
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    <?=
+                                    preg_replace_callback('/\/(\d{1,2})/', function($matches) {
+                                        return '<span>' . numberToFullyMonthName($matches[1]) . '</span>';
+                                    }, (new DateTime($post->getUpdatedAt() ?? $post->getCreatedAt()))->format('d /n Y'))
+                                    ?>
+                                </div>
                             </div>
-                            <div>
-                                <i class="fa fa-comment" aria-hidden="true"></i>
-                                Pas de commentaires
-                            </div>
-                            <div>
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                04 janvier 2021
-                            </div>
+
+                            <h2 class="article-card__title">
+                                <a href="<?= $templateVars['router']->generate('articleShow', ['id' => $post->getId()]) ?>">
+                                    <?= $post->getTitle() ?>
+                                </a>
+                            </h2>
+
+                            <p><?= $post->getSummary() ?></p>
                         </div>
-
-                        <h2 class="article-card__title">
-                            <a href="#">Mon parcours avec l'organisme de formation O'clock</a>
-                        </h2>
-
-                        <p>J'ai pu développer de nombreuses nouvelles compétences dont relationnelles avec le projet de fin de formation.</p>
                     </div>
-                </div>
-
-                <div class="article-card">
-                    <a class="article-card__image" href="#">
-                        <time class="article-card__publication-date" datetime="01-04">04 <span>Janv</span></time>
-                        <img src="uploads/oclock.png" alt="">
-                    </a>
-
-                    <div class="article-card__body">
-                        <div class="article-card__icons">
-                            <div>
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                Michaël
-                            </div>
-                            <div>
-                                <i class="fa fa-comment" aria-hidden="true"></i>
-                                Pas de commentaires
-                            </div>
-                            <div>
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                04 janvier 2021
-                            </div>
-                        </div>
-
-                        <h2 class="article-card__title">
-                            <a href="#">Mon parcours avec l'organisme de formation O'clock</a>
-                        </h2>
-
-                        <p>J'ai pu développer de nombreuses nouvelles compétences dont relationnelles avec le projet de fin de formation.</p>
-                    </div>
-                </div>
-
-                <div class="article-card">
-                    <a class="article-card__image" href="#">
-                        <time class="article-card__publication-date" datetime="01-04">04 <span>Janv</span></time>
-                        <img src="uploads/oclock.png" alt="">
-                    </a>
-
-                    <div class="article-card__body">
-                        <div class="article-card__icons">
-                            <div>
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                Michaël
-                            </div>
-                            <div>
-                                <i class="fa fa-comment" aria-hidden="true"></i>
-                                Pas de commentaires
-                            </div>
-                            <div>
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                04 janvier 2021
-                            </div>
-                        </div>
-
-                        <h2 class="article-card__title">
-                            <a href="#">Mon parcours avec l'organisme de formation O'clock</a>
-                        </h2>
-
-                        <p>J'ai pu développer de nombreuses nouvelles compétences dont relationnelles avec le projet de fin de formation.</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
 
-            <!-- Sidebar block -->
-            <aside class="blog__sidebar">
-
-                <form action="<?= $templateVars['router']->generate('articleList') ?>" class="search-bar" method="get">
-                    <input type="text" name="search" id="search" placeholder="Votre recherche...">
-                    <button type="submit">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                </form>
-
-                <h2 class="sidebar-title">Derniers articles</h2>
-
-                <div>
-                    <div class="article-aside">
-                        <a class="article-aside__image" href="#">
-                            <img src="uploads/oclock.png" alt="">
-                        </a>
-                        <div class="article-aside__head">
-                            <h3 class="article-aside__title">
-                                <a href="#">Mon parcours avec l'organisme de formation O'Clock</a>
-                            </h3>
-                            <time class="article-aside__publication-date">04 janvier 2021</time>
-                        </div>
-                    </div>
-
-                    <div class="article-aside">
-                        <a class="article-aside__image" href="#">
-                            <img src="uploads/oclock.png" alt="">
-                        </a>
-                        <div class="article-aside__head">
-                            <h3 class="article-aside__title">
-                                <a href="#">Mon parcours avec l'organisme de formation O'Clock</a>
-                            </h3>
-                            <time class="article-aside__publication-date">04 janvier 2021</time>
-                        </div>
-                    </div>
-
-                    <div class="article-aside">
-                        <a class="article-aside__image" href="#">
-                            <img src="uploads/oclock.png" alt="">
-                        </a>
-                        <div class="article-aside__head">
-                            <h3 class="article-aside__title">
-                                <a href="#">Mon parcours avec l'organisme de formation O'Clock</a>
-                            </h3>
-                            <time class="article-aside__publication-date">04 janvier 2021</time>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-            <!-- Sidebar block END -->
+            <?php include __DIR__ . DIRECTORY_SEPARATOR . 'layout' . DIRECTORY_SEPARATOR . '_sidebar.tpl.php' ?>
         </div>
     </section>
 </div>
