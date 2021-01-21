@@ -15,16 +15,13 @@
 
     <section class="blog">
         <div class="section-wrapper">
-
             <div class="blog__content">
-                <div class="article-card">
 
-                    <div class="article-card__image">
-                        <a href="#">
-                            <time class="article-card__publication-date" datetime="01-04">04 Janv</time>
-                            <img src="uploads/oclock.png" alt="">
-                        </a>
-                    </div>
+                <div class="article-card">
+                    <a class="article-card__image" href="#">
+                        <time class="article-card__publication-date" datetime="01-04">04 <span>Janv</span></time>
+                        <img src="uploads/oclock.png" alt="">
+                    </a>
 
                     <div class="article-card__body">
                         <div class="article-card__icons">
@@ -41,21 +38,20 @@
                                 04 janvier 2021
                             </div>
                         </div>
+
                         <h2 class="article-card__title">
                             <a href="#">Mon parcours avec l'organisme de formation O'clock</a>
                         </h2>
+
                         <p>J'ai pu développer de nombreuses nouvelles compétences dont relationnelles avec le projet de fin de formation.</p>
                     </div>
                 </div>
 
                 <div class="article-card">
-
-                    <div class="article-card__image">
-                        <a href="#">
-                            <time class="article-card__publication-date" datetime="01-04">04 Janv</time>
-                            <img src="uploads/oclock.png" alt="">
-                        </a>
-                    </div>
+                    <a class="article-card__image" href="#">
+                        <time class="article-card__publication-date" datetime="01-04">04 <span>Janv</span></time>
+                        <img src="uploads/oclock.png" alt="">
+                    </a>
 
                     <div class="article-card__body">
                         <div class="article-card__icons">
@@ -72,21 +68,20 @@
                                 04 janvier 2021
                             </div>
                         </div>
+
                         <h2 class="article-card__title">
                             <a href="#">Mon parcours avec l'organisme de formation O'clock</a>
                         </h2>
+
                         <p>J'ai pu développer de nombreuses nouvelles compétences dont relationnelles avec le projet de fin de formation.</p>
                     </div>
                 </div>
 
                 <div class="article-card">
-
-                    <div class="article-card__image">
-                        <a href="#">
-                            <time class="article-card__publication-date" datetime="01-04">04 Janv</time>
-                            <img src="uploads/oclock.png" alt="">
-                        </a>
-                    </div>
+                    <a class="article-card__image" href="#">
+                        <time class="article-card__publication-date" datetime="01-04">04 <span>Janv</span></time>
+                        <img src="uploads/oclock.png" alt="">
+                    </a>
 
                     <div class="article-card__body">
                         <div class="article-card__icons">
@@ -103,19 +98,20 @@
                                 04 janvier 2021
                             </div>
                         </div>
+
                         <h2 class="article-card__title">
                             <a href="#">Mon parcours avec l'organisme de formation O'clock</a>
                         </h2>
+
                         <p>J'ai pu développer de nombreuses nouvelles compétences dont relationnelles avec le projet de fin de formation.</p>
                     </div>
                 </div>
             </div>
 
+            <!-- Sidebar block -->
             <aside class="blog__sidebar">
 
-                <h2 class="sidebar-title">Rechercher</h2>
-
-                <form action="" class="search-bar" method="get">
+                <form action="<?= $templateVars['router']->generate('articleList') ?>" class="search-bar" method="get">
                     <input type="text" name="search" id="search" placeholder="Votre recherche...">
                     <button type="submit">
                         <i class="fa fa-search" aria-hidden="true"></i>
@@ -162,6 +158,7 @@
                     </div>
                 </div>
             </aside>
+            <!-- Sidebar block END -->
         </div>
     </section>
 </div>
