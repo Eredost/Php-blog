@@ -1,0 +1,19 @@
+.blog {
+  &__content {
+    max-width: 750px;
+  }
+
+  &__sidebar {
+    max-width: 390px;
+    margin: 2em auto 0;
+  }
+
+  @media all and (min-width: $breakpoint-medium) {
+    display: flex;
+    justify-content: center;
+
+    &__content {
+      flex: 1;
+    }
+  }
+}
