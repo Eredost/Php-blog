@@ -32,7 +32,7 @@ class SignupForm extends FormBuilder
                     'classFQCN'  => 'Blog\Models\UserManager',
                     'method'     => 'findUserBy',
                     'columnName' => 'email',
-                    'message'    => 'Cette email est déjà utilisé',
+                    'message'    => 'Cet email est déjà utilisé',
                 ]),
             ],
         ])

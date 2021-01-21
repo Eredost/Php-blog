@@ -14,7 +14,7 @@
                     <a href="<?= $templateVars['router']->generate('homepage') ?>" class="navbar__link active">Accueil</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="#" class="navbar__link">Blog</a>
+                    <a href="<?= $templateVars['router']->generate('articleList') ?>" class="navbar__link">Blog</a>
                 </li>
 
                 <?php if ($templateVars['request']->isAuthenticated()): ?>

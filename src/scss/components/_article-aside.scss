@@ -1,0 +1,39 @@
+.article-aside {
+  display: flex;
+  align-items: center;
+
+  & + & {
+    margin-top: 1.2em;
+  }
+
+  &__image {
+    display: block;
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
+    margin-right: 1em;
+
+    & > img {
+      display: block;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 0.8em;
+    font-size: 1em;
+
+    & > a {
+      color: $title-color;
+      font-size: 1.05em;
+      line-height: 1.3;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+}

@@ -122,5 +122,11 @@ final class App
             'Blog\Controllers\SecurityController#disconnect',
             'disconnect'
         );
+        $this->router->map(
+            'GET',
+            '/blog',
+            'Blog\Controllers\PostController#articleList',
+            'articleList'
+        );
     }
 }
