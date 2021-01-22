@@ -11,7 +11,7 @@ use Blog\Utils\Validators\EmailValidator;
 use Blog\Utils\Validators\LengthValidator;
 use Blog\Utils\Validators\NotBlankValidator;
 
-class EmailForm extends FormBuilder
+class ContactForm extends FormBuilder
 {
     protected function buildForm()
     {

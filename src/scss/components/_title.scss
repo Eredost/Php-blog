@@ -30,12 +30,17 @@
 }
 
 .sidebar-title {
+  color: $title-color;
   position: relative;
   display: inline-block;
   font-size: 1.25em;
   font-weight: 600;
   padding-bottom: 0.2em;
   margin-bottom: 1.6em;
+
+  &.mt {
+    margin-top: 2em;
+  }
 
   &::after {
     content: "";

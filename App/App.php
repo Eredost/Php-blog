@@ -123,16 +123,16 @@ final class App
             'disconnect'
         );
         $this->router->map(
+            'GET|POST',
+            '/blog/[i:postId]',
+            'Blog\Controllers\PostController#articleShow',
+            'articleShow'
+        );
+        $this->router->map(
             'GET',
             '/blog',
             'Blog\Controllers\PostController#articleList',
             'articleList'
-        );
-        $this->router->map(
-            'GET|POST',
-            '/blog/[i:id]',
-            'Blog\Controllers\PostController#articleShow',
-            'articleShow'
         );
     }
 }

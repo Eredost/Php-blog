@@ -20,7 +20,7 @@
                 <?php foreach($templateVars['posts'] as $post): ?>
 
                     <div class="article-card">
-                        <a class="article-card__image" href="<?= $templateVars['router']->generate('articleShow', ['id' => $post->getId()]) ?>">
+                        <a class="article-card__image" href="<?= $templateVars['router']->generate('articleShow', ['postId' => $post->getId()]) ?>">
                             <time class="article-card__publication-date" datetime="<?= (new DateTime($post->getCreatedAt()))->format('Y-m-d') ?>">
                                 <?=
                                 preg_replace_callback('/\/(\d{1,2})/', function($matches) {
@@ -52,12 +52,12 @@
                             </div>
 
                             <h2 class="article-card__title">
-                                <a href="<?= $templateVars['router']->generate('articleShow', ['id' => $post->getId()]) ?>">
+                                <a href="<?= $templateVars['router']->generate('articleShow', ['postId' => $post->getId()]) ?>">
                                     <?= $post->getTitle() ?>
                                 </a>
                             </h2>
 
-                            <p><?= $post->getSummary() ?></p>
+                            <p class="article-card__summary"><?= $post->getSummary() ?></p>
                         </div>
                     </div>
                 <?php endforeach; ?>

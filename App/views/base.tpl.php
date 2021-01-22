@@ -7,10 +7,10 @@
     <title><?= ($title ?? 'Michaël Coutin - Développeur d\'applications') ?></title>
 
     <link rel="stylesheet" href="<?= $templateVars['request']->baseURI() ?>/main.css" type="text/css">
-    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
-    <link rel="manifest" href="./site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= $templateVars['request']->baseURI() ?>/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= $templateVars['request']->baseURI() ?>/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= $templateVars['request']->baseURI() ?>/favicon-16x16.png">
+    <link rel="manifest" href="<?= $templateVars['request']->baseURI() ?>/site.webmanifest">
 </head>
 <body class="body">
 

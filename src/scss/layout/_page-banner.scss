@@ -24,6 +24,10 @@
     font-size: 2.4em;
   }
 
+  &__breadcrumb {
+    line-height: 1.3;
+  }
+
   @media all and (min-width: $breakpoint-medium) {
     &__title {
       font-size: 3.1em;

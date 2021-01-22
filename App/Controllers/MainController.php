@@ -2,7 +2,7 @@
 
 namespace Blog\Controllers;
 
-use Blog\Forms\EmailForm;
+use Blog\Forms\ContactForm;
 use Blog\TemplateEngine;
 use Blog\Utils\Mailer;
 
@@ -10,7 +10,7 @@ class MainController extends TemplateEngine
 {
     public function home()
     {
-        $contactForm = new EmailForm();
+        $contactForm = new ContactForm();
         $contactForm->handleRequest($this->request->request());
 
         if ($this->request->isMethod('post') && $contactForm->isValid()) {
