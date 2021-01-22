@@ -11,15 +11,15 @@
 
     <div>
 
-        <?php foreach($templateVars['posts'] as $post): ?>
+        <?php foreach($templateVars['lastPosts'] as $post): ?>
 
             <div class="article-aside">
-                <a class="article-aside__image" href="<?= $templateVars['router']->generate('articleShow', ['id' => $post->getId()]) ?>">
+                <a class="article-aside__image" href="<?= $templateVars['router']->generate('articleShow', ['postId' => $post->getId()]) ?>">
                     <img src="<?= $post->getImage() ?>" alt="">
                 </a>
                 <div class="article-aside__head">
                     <h3 class="article-aside__title">
-                        <a href="<?= $templateVars['router']->generate('articleShow', ['id' => $post->getId()]) ?>"><?= $post->getTitle() ?></a>
+                        <a href="<?= $templateVars['router']->generate('articleShow', ['postId' => $post->getId()]) ?>"><?= $post->getTitle() ?></a>
                     </h3>
                     <time class="article-aside__publication-date" datetime="<?= (new DateTime($post->getCreatedAt()))->format('Y-m-d') ?>">
                         <?=

@@ -19,7 +19,7 @@ abstract class FormBuilder
      */
     public function __construct(?object $entity = null)
     {
-        $this->entity = $entity;
+        $this->entity = &$entity;
         $this->buildForm();
     }
 
@@ -39,6 +39,12 @@ abstract class FormBuilder
         foreach ($this->fields as $field) {
             if (array_key_exists($field->getName(), $request)) {
                 $field->setValue($request[$field->getName()]);
+
+                if (!empty($this->entity)
+                    && method_exists($this->entity, 'set'.ucfirst($field->getName()))) {
+
+                    $this->entity->{'set'.ucfirst($field->getName())}($request[$field->getName()]);
+                }
             }
         }
     }

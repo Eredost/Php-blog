@@ -37,11 +37,12 @@
   }
 
   &__title {
-    font-size: 1em;
+    font-size: 1.25em;
     margin: 0.6em 0 0.8em;
+    line-height: 1.2;
 
     & > a {
-      font-size: 1.25em;
+      font-size: 1em;
       color: $title-color;
       line-height: 1.2;
 
@@ -49,6 +50,10 @@
         color: $brand-color;
       }
     }
+  }
+
+  &__summary {
+    font-weight: 600;
   }
 
   @media all and (min-width: $breakpoint-medium) {
@@ -68,10 +73,7 @@
 
     &__title {
       margin: 0.75em 0 1em;
-
-      & > a {
-        font-size: 1.5em;
-      }
+      font-size: 1.5em;
     }
   }
 }
