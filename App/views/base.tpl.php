@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= ($title ?? 'Michaël Coutin - Développeur d\'applications') ?></title>
 
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="<?= $templateVars['request']->baseURI() ?>/main.css" type="text/css">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
@@ -20,6 +20,6 @@
 
     <?php include('layouts/_footer.tpl.php') ?>
 
-    <script src="js/main.js" defer></script>
+    <script src="<?= $templateVars['request']->baseURI() ?>/js/main.js" defer></script>
 </body>
 </html>
