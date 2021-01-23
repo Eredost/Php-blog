@@ -19,22 +19,12 @@ class DBData
     {
         $config = parse_ini_file(dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'database.conf');
 
-        try {
-            $this->dbh = new PDO(
-                "mysql:host={$config['DB_HOST']};dbname={$config['DB_NAME']};charset=utf8",
-                $config['DB_USERNAME'],
-                $config['DB_PASSWORD'],
-                array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING)
-            );
-        } catch (\Exception $e) {
-            echo "
-                Erreur de connexion <br>
-                {$e->getMessage()} <br>
-                <pre>
-                    {$e->getTraceAsString()}
-                </pre>
-            ";
-        }
+        $this->dbh = new PDO(
+            "mysql:host={$config['DB_HOST']};dbname={$config['DB_NAME']};charset=utf8",
+            $config['DB_USERNAME'],
+            $config['DB_PASSWORD'],
+            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING)
+        );
     }
 
     /**
