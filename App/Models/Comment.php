@@ -27,6 +27,8 @@ class Comment extends CommentManager
 
     public function __construct(array $data = [])
     {
+        $this->createdAt = $this->createdAt ?? (new \DateTime())->format('Y-m-d H:i:s');
+
         $this->hydrate($data);
     }
 
@@ -73,7 +75,7 @@ class Comment extends CommentManager
     /**
      * @return bool|null
      */
-    public function isValidated(): ?bool
+    public function getIsValidated(): ?bool
     {
         return $this->isValidated;
     }

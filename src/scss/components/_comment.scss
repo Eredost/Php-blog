@@ -1,0 +1,43 @@
+.comment {
+  & + & {
+    margin-top: 2em;
+  }
+
+  &__image {
+    display: none;
+  }
+
+  &__username {
+    color: $title-color;
+    margin-bottom: 0;
+  }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+
+  &__content {
+    margin-bottom: 0;
+  }
+
+  @media all and (min-width: $breakpoint-small) {
+    display: flex;
+    align-items: flex-start;
+
+    & + & {
+      margin-top: 3em;
+    }
+
+    &__image {
+      display: block;
+      margin-right: 1em;
+    }
+
+    &__body {
+      flex: 1;
+    }
+  }
+}

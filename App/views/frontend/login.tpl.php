@@ -8,7 +8,7 @@
                 <h1 class="login__title">Connexion</h1>
 
                 <?php
-                if ($flashMessages = $templateVars['request']->getFlashMessage(['error'])):
+                if ($flashMessages = $templateVars['request']->getFlashMessage(['success', 'error'])):
                     foreach ($flashMessages as $key => $message):
                         ?>
                         <div class="alert <?= $key ?>">

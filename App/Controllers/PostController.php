@@ -35,7 +35,18 @@ class PostController extends TemplateEngine
         $commentForm->handleRequest($this->request->request());
 
         if ($this->request->isMethod('post') && $this->request->isAuthenticated() && $commentForm->isValid()) {
-            // TODO: implement form submit
+            $comment->setPostId($post->getId())
+                ->setUserId($this->request->getCurrentUser()->getId())
+                ->setIsValidated($this->request->isGranted('ROLE_ADMIN'))
+                ->save()
+            ;
+            if ($comment->getIsValidated()) {
+                $this->request->addFlashMessage('success', 'Votre commentaire a bien été ajouté.');
+            } else {
+                $this->request->addFlashMessage('success', 'Votre commentaire a bien été ajouté, cependant celui-ci devra d\'abord être vérifié et validé par un administrateur afin d\'être visible');
+            }
+
+            return $this->redirect($this->router->generate('articleShow', ['postId' => $post->getId()]) . '#comment');
         }
 
         return $this->render('frontend/article', [
