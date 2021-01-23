@@ -39,7 +39,7 @@ abstract class CommentManager extends AbstractManager
                 LEFT JOIN user AS u
                     ON c.userId = u.id
                 WHERE c.postId = :id AND c.isValidated IS TRUE  
-                ORDER BY createdAt DESC;
+                ORDER BY createdAt;
         ";
         $pdo = DBData::getDBH();
         $request = $pdo->prepare($sql);

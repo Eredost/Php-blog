@@ -75,11 +75,45 @@ ob_start();
                         <p>Soyez le premier à réagir à cette article !</p>
                     <?php endif; ?>
 
+                    <?php foreach ($templateVars['comments'] as $comment): ?>
+                        <div class="comment">
+                            <div class="comment__image">
+                                <img src="<?= $templateVars['request']->baseURI() ?>/uploads/user.png" alt="">
+                            </div>
+                            <div class="comment__body">
+                                <div class="comment__head">
+                                    <p class="comment__username">
+                                        <?= $comment->username ?>
+                                    </p>
+                                    <time datetime="<?= (new DateTime($comment->getCreatedAt()))->format('Y-m-d') ?>">
+                                        <?= (new DateTime($comment->getCreatedAt()))->format('d/m/Y H:i:s') ?>
+                                    </time>
+                                </div>
+                                <p class="comment__content">
+                                    <?= $comment->getContent() ?>
+                                </p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+
                     <div class="sidebar-title mt">Laisser un commentaire</div>
+
+                    <?php
+                    if ($flashMessages = $templateVars['request']->getFlashMessage(['success'])):
+                        foreach ($flashMessages as $key => $message):
+                            ?>
+                            <div class="alert <?= $key ?>">
+                                <i class="fa fa-times alert__closer" aria-hidden="true"></i>
+                                <p><?= $message ?></p>
+                            </div>
+                        <?php
+                        endforeach;
+                    endif;
+                    ?>
 
                     <?php if ($templateVars['request']->isAuthenticated()): ?>
 
-                        <form class="form" action="<?= $templateVars['router']->generate('articleShow', ['postId' => $templateVars['post']->getId()]) . '#comm' ?>" method="post">
+                        <form class="form" action="<?= $templateVars['router']->generate('articleShow', ['postId' => $templateVars['post']->getId()]) . '#comment' ?>" method="post" id="comment">
                             <?= $templateVars['commentForm']; ?>
                         </form>
 
