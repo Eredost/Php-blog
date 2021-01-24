@@ -3,8 +3,10 @@
 namespace Blog\Forms;
 
 use Blog\Utils\FormBuilder;
+use Blog\Utils\Types\CsrfTokenType;
 use Blog\Utils\Types\SubmitType;
 use Blog\Utils\Types\TextAreaType;
+use Blog\Utils\Validators\CsrfTokenValidator;
 use Blog\Utils\Validators\LengthValidator;
 use Blog\Utils\Validators\NotBlankValidator;
 
@@ -28,6 +30,11 @@ class CommentForm extends FormBuilder
                 ])
             ],
         ])
+            ->add('token', CsrfTokenType::class, [
+                'validators' => [
+                    new CsrfTokenValidator(),
+                ],
+            ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Envoyer'
             ])

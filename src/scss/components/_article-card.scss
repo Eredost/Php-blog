@@ -7,6 +7,8 @@
     display: block;
     position: relative;
     margin-bottom: 1.2em;
+    min-height: 120px;
+    background: $background-color-alt;
 
     & > time {
       position: absolute;
@@ -54,6 +56,10 @@
 
   &__summary {
     font-weight: 600;
+  }
+
+  &__content {
+    overflow-wrap: break-word;
   }
 
   @media all and (min-width: $breakpoint-medium) {

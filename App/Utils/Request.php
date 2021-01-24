@@ -27,6 +27,10 @@ class Request
         $this->get = $_GET;
         $this->server = $_SERVER;
         $this->session = &$_SESSION;
+
+        if (!$this->getCsrfToken()) {
+            $this->generateCsrfToken();
+        }
     }
 
     /**
@@ -57,6 +61,24 @@ class Request
     public function baseURI(): string
     {
         return $this->server['BASE_URI'] ?? '';
+    }
+
+    /**
+     * Generate a new CSRF token with a random hexadecimal string
+     *
+     * @throws \Exception
+     */
+    private function generateCsrfToken(): void
+    {
+        $this->session['csrfToken'] = bin2hex(random_bytes(32));
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCsrfToken(): ?string
+    {
+        return $this->session['csrfToken'] ?? null;
     }
 
     /**
