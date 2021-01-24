@@ -3,10 +3,12 @@
 namespace Blog\Forms;
 
 use Blog\Utils\FormBuilder;
+use Blog\Utils\Types\CsrfTokenType;
 use Blog\Utils\Types\EmailType;
 use Blog\Utils\Types\SubmitType;
 use Blog\Utils\Types\TextAreaType;
 use Blog\Utils\Types\TextType;
+use Blog\Utils\Validators\CsrfTokenValidator;
 use Blog\Utils\Validators\EmailValidator;
 use Blog\Utils\Validators\LengthValidator;
 use Blog\Utils\Validators\NotBlankValidator;
@@ -68,6 +70,11 @@ class ContactForm extends FormBuilder
                         'minMessage' => 'Votre message doit contenir au minimum %d caractères',
                         'maxMessage' => 'Votre message doit contenir au maximum %d caractères',
                     ])
+                ],
+            ])
+            ->add('token', CsrfTokenType::class, [
+                'validators' => [
+                    new CsrfTokenValidator(),
                 ],
             ])
             ->add('submit', SubmitType::class, [

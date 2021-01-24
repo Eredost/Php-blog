@@ -3,9 +3,11 @@
 namespace Blog\Forms;
 
 use Blog\Utils\FormBuilder;
+use Blog\Utils\Types\CsrfTokenType;
 use Blog\Utils\Types\EmailType;
 use Blog\Utils\Types\PasswordType;
 use Blog\Utils\Types\TextType;
+use Blog\Utils\Validators\CsrfTokenValidator;
 use Blog\Utils\Validators\EmailValidator;
 use Blog\Utils\Validators\LengthValidator;
 use Blog\Utils\Validators\NotBlankValidator;
@@ -73,6 +75,11 @@ class SignupForm extends FormBuilder
                         'maxMessage' => 'Votre mot de passe doit contenir au maximum %d caractères',
                     ]),
                     new PasswordValidator(),
+                ],
+            ])
+            ->add('token', CsrfTokenType::class, [
+                'validators' => [
+                    new CsrfTokenValidator(),
                 ],
             ])
         ;
