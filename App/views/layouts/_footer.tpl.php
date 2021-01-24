@@ -30,7 +30,7 @@
                 <?php if ($templateVars['request']->isGranted('ROLE_ADMIN')): ?>
 
                     <li class="footer__link">
-                        <a href="#">Administration</a>
+                        <a href="<?= $templateVars['router']->generate('adminShow') ?>">Administration</a>
                         <span class="separator">|</span>
                     </li>
                 <?php endif; ?>
