@@ -1,0 +1,58 @@
+.articles-admin {
+  margin-bottom: 2em;
+}
+
+.article-admin {
+  display: flex;
+  padding: 0.5em;
+  border-bottom: 1px dotted #ccc;
+  min-height: 70px;
+  margin-bottom: 1em;
+
+  &__image {
+    display: none;
+    margin-right: 1em;
+
+    & > img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    margin-right: 1em;
+  }
+
+  &__actions {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__edit {
+    font-size: 1.35em;
+    color: $orange;
+  }
+
+  &__deletion {
+    color: $red;
+
+    & > button {
+      font-size: 1.35em;
+      padding: 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: $red;
+    }
+  }
+
+  @media all and (min-width: $breakpoint-small) {
+    &__image {
+      display: block;
+    }
+  }
+}

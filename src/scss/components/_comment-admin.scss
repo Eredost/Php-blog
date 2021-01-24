@@ -1,0 +1,40 @@
+.comment-admin {
+  display: flex;
+  padding: 0.5em;
+  border-bottom: 1px dotted #ccc;
+  min-height: 70px;
+  margin-bottom: 1em;
+
+  &__content {
+    margin-right: 1em;
+  }
+
+  &__actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &__validation,
+  &__deletion {
+    & > button {
+      font-size: 1.35em;
+      padding: 0;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  &__validation > button {
+    color: $green;
+  }
+
+  &__deletion {
+    margin-left: 1em;
+  }
+
+  &__deletion > button {
+    color: $red;
+  }
+}

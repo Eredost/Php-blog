@@ -134,5 +134,17 @@ final class App
             'Blog\Controllers\PostController#articleList',
             'articleList'
         );
+        $this->router->map(
+            'GET|POST',
+            '/admin/article',
+            'Blog\Controllers\AdminController#addArticle',
+            'addArticle'
+        );
+        $this->router->map(
+            'GET',
+            '/admin',
+            'Blog\Controllers\AdminController#adminShow',
+            'adminShow'
+        );
     }
 }

@@ -49,4 +49,20 @@ abstract class CommentManager extends AbstractManager
 
         return $request->fetchAll(\PDO::FETCH_CLASS, Comment::class);
     }
+
+    /**
+     * Finds all comments that are pending validation
+     */
+    public static function findAllNonValidatedComments()
+    {
+        $sql = "
+            SELECT id, content
+                FROM comment
+                WHERE isValidated IS FALSE;
+        ";
+        $pdo = DBData::getDBH();
+        $request = $pdo->query($sql);
+
+        return $request->fetchAll(\PDO::FETCH_CLASS, Comment::class);
+    }
 }
