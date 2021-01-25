@@ -83,14 +83,14 @@ ob_start();
                             <div class="comment__body">
                                 <div class="comment__head">
                                     <p class="comment__username">
-                                        <?= $comment->username ?>
+                                        <?= htmlspecialchars($comment->username) ?>
                                     </p>
                                     <time datetime="<?= (new DateTime($comment->getCreatedAt()))->format('Y-m-d') ?>">
                                         <?= (new DateTime($comment->getCreatedAt()))->format('d/m/Y H:i:s') ?>
                                     </time>
                                 </div>
                                 <p class="comment__content">
-                                    <?= $comment->getContent() ?>
+                                    <?= htmlspecialchars($comment->getContent()) ?>
                                 </p>
                             </div>
                         </div>

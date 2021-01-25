@@ -3,10 +3,12 @@
 namespace Blog\Forms;
 
 use Blog\Utils\FormBuilder;
+use Blog\Utils\Types\CsrfTokenType;
 use Blog\Utils\Types\FileType;
 use Blog\Utils\Types\NumberType;
 use Blog\Utils\Types\TextAreaType;
 use Blog\Utils\Types\TextType;
+use Blog\Utils\Validators\CsrfTokenValidator;
 use Blog\Utils\Validators\ImageFileValidator;
 use Blog\Utils\Validators\IsNumberValidator;
 use Blog\Utils\Validators\LengthValidator;
@@ -77,6 +79,11 @@ class ArticleForm extends FormBuilder
                     new IsNumberValidator([
                         'message' => 'L\'identifiant de l\'auteur doit être un nombre',
                     ]),
+                ],
+            ])
+            ->add('token', CsrfTokenType::class, [
+                'validators' => [
+                    new CsrfTokenValidator(),
                 ],
             ])
         ;

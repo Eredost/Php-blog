@@ -51,7 +51,7 @@ ob_start();
                             <a href="<?= $templateVars['router']->generate('adminEditArticle', ['postId' => $post->getId()]) ?>" class="article-admin__edit">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
-                            <form action="<?= $templateVars['router']->generate('adminDeleteArticle', ['postId' => $post->getId()]) ?>" method="post" class="article-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer l\'article' ?')">
+                            <form action="<?= $templateVars['router']->generate('adminDeleteArticle', ['postId' => $post->getId()]) ?>" method="post" class="article-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer l\'article ?')">
                                 <?= $templateVars['adminForm'] ?>
                                 <button type="submit">
                                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -68,7 +68,7 @@ ob_start();
                 <?php foreach ($templateVars['comments'] as $comment): ?>
                     <div class="comment-admin">
                         <div class="comment-admin__content">
-                            <?= $comment->getContent() ?>
+                            <?= htmlspecialchars($comment->getContent()) ?>
                         </div>
                         <div class="comment-admin__actions">
                             <form action="<?= $templateVars['router']->generate('adminValidateComment', ['commentId' => $comment->getId()]) ?>" method="post" class="comment-admin__validation">
