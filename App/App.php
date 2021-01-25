@@ -135,10 +135,22 @@ final class App
             'articleList'
         );
         $this->router->map(
+            'POST',
+            '/admin/comment/[i:commentId]/delete',
+            'Blog\Controllers\AdminController#deleteComment',
+            'adminDeleteComment'
+        );
+        $this->router->map(
+            'POST',
+            '/admin/comment/[i:commentId]/validate',
+            'Blog\Controllers\AdminController#validateComment',
+            'adminValidateComment'
+        );
+        $this->router->map(
             'GET|POST',
             '/admin/article',
             'Blog\Controllers\AdminController#addArticle',
-            'addArticle'
+            'adminAddArticle'
         );
         $this->router->map(
             'GET',

@@ -18,10 +18,24 @@ ob_start();
 
     <section>
         <div class="section-wrapper">
+
+            <?php
+            if ($flashMessages = $templateVars['request']->getFlashMessage(['success', 'error'])):
+                foreach ($flashMessages as $key => $message):
+                    ?>
+                    <div class="alert <?= $key ?>">
+                        <i class="fa fa-times alert__closer" aria-hidden="true"></i>
+                        <p><?= $message ?></p>
+                    </div>
+                <?php
+                endforeach;
+            endif;
+            ?>
+
             <h2 class="sidebar-title big">Gestion des articles</h2>
 
             <p>
-                <a href="<?= $templateVars['router']->generate('addArticle') ?>" class="button square">+ Ajouter un article</a>
+                <a href="<?= $templateVars['router']->generate('adminAddArticle') ?>" class="button square">+ Ajouter un article</a>
             </p>
 
             <div class="articles-admin">
@@ -37,7 +51,7 @@ ob_start();
                             <a href="#" class="article-admin__edit">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
-                            <form action="" class="article-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer l\'article' ?')">
+                            <form action="" method="post" class="article-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer l\'article' ?')">
                                 <?= $templateVars['adminForm'] ?>
                                 <button type="submit">
                                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -57,13 +71,13 @@ ob_start();
                             <?= $comment->getContent() ?>
                         </div>
                         <div class="comment-admin__actions">
-                            <form action="" class="comment-admin__validation">
+                            <form action="<?= $templateVars['router']->generate('adminValidateComment', ['commentId' => $comment->getId()]) ?>" method="post" class="comment-admin__validation">
                                 <?= $templateVars['adminForm'] ?>
                                 <button type="submit">
                                     <i class="fa fa-check" aria-hidden="true"></i>
                                 </button>
                             </form>
-                            <form action="" class="comment-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer le commentaire ?')">
+                            <form action="<?= $templateVars['router']->generate('adminDeleteComment', ['commentId' => $comment->getId()]) ?>" method="post" class="comment-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer le commentaire ?')">
                                 <?= $templateVars['adminForm'] ?>
                                 <button type="submit">
                                     <i class="fa fa-times" aria-hidden="true"></i>
