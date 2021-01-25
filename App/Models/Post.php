@@ -30,6 +30,8 @@ class Post extends PostManager
 
     public function __construct(array $data = [])
     {
+        $this->createdAt = $this->createdAt ?? (new \DateTime())->format('Y-m-d H:i:s');
+
         $this->hydrate($data);
     }
 
