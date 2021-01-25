@@ -9,6 +9,7 @@ use Blog\Utils\Types\NumberType;
 use Blog\Utils\Types\TextAreaType;
 use Blog\Utils\Types\TextType;
 use Blog\Utils\Validators\CsrfTokenValidator;
+use Blog\Utils\Validators\EntityValidator;
 use Blog\Utils\Validators\ImageFileValidator;
 use Blog\Utils\Validators\IsNumberValidator;
 use Blog\Utils\Validators\LengthValidator;
@@ -78,6 +79,11 @@ class ArticleForm extends FormBuilder
                     ]),
                     new IsNumberValidator([
                         'message' => 'L\'identifiant de l\'auteur doit être un nombre',
+                    ]),
+                    new EntityValidator([
+                        'classFQCN' => 'Blog\Models\UserManager',
+                        'method'    => 'find',
+                        'message'   => 'L\'identifiant fournit ne correspond à aucun utilisateur dans la base de données'
                     ]),
                 ],
             ])

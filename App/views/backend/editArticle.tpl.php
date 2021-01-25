@@ -6,19 +6,6 @@
 
                 <h1 class="admin-modal__title">Modification d'un article</h1>
 
-                <?php
-                if ($flashMessages = $templateVars['request']->getFlashMessage(['success', 'error'])):
-                    foreach ($flashMessages as $key => $message):
-                        ?>
-                        <div class="alert <?= $key ?>">
-                            <i class="fa fa-times alert__closer" aria-hidden="true"></i>
-                            <p><?= $message ?></p>
-                        </div>
-                    <?php
-                    endforeach;
-                endif;
-                ?>
-
                 <form enctype="multipart/form-data" action="<?= $templateVars['router']->generate('adminEditArticle', ['postId' => $templateVars['postId']]) ?>" method="post">
                     <?= $templateVars['editForm'] ?>
 
@@ -40,4 +27,3 @@
 $content = ob_get_clean();
 
 include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'base.tpl.php';
-

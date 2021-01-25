@@ -5,7 +5,7 @@ namespace Blog\Utils\Validators;
 use Blog\Models\Traits\HydratorTrait;
 use InvalidArgumentException;
 
-class UniqueValidator extends Validator
+class EntityValidator extends Validator
 {
     use HydratorTrait;
 
@@ -15,18 +15,13 @@ class UniqueValidator extends Validator
     /** @var string $method */
     private $method;
 
-    /** @var string $columnName */
-    private $columnName;
-
     /** @var string $message */
-    private $message = 'Cette valeur est déjà utilisée';
+    private $message = 'L\'entité précisée n\'existe pas';
 
     /**
-     * UniqueValidator constructor.
+     * EntityValidator constructor.
      *
      * @param array $options
-     *
-     * @throws InvalidArgumentException When one of the necessary properties is missing
      */
     public function __construct(array $options = [])
     {
@@ -34,9 +29,9 @@ class UniqueValidator extends Validator
             $this->hydrate($options);
         }
 
-        if (!isset($this->classFQCN, $this->method, $this->columnName)) {
+        if (!isset($this->classFQCN, $this->method)) {
 
-            throw new InvalidArgumentException('Les propriétés classFQCN, method et columnName doivent être renseignées afin de pouvoir appeller la méthode de selection');
+            throw new InvalidArgumentException('Les propriétés classFQCN et method doivent être renseignées afin de pouvoir rechercher l\'entité');
         }
     }
 
@@ -46,7 +41,7 @@ class UniqueValidator extends Validator
     public function isValid($value): bool
     {
         if (!empty($value)
-            && $this->classFQCN::{$this->method}($this->columnName, $value)) {
+            && !$this->classFQCN::{$this->method}($value)) {
 
             $this->setErrorMessage($this->message);
         }
@@ -65,23 +60,15 @@ class UniqueValidator extends Validator
     /**
      * @param string $method
      */
-    public function setMethod(string $method)
+    public function setMethod(string $method): void
     {
         $this->method = $method;
     }
 
     /**
-     * @param string $columnName
-     */
-    public function setColumnName(string $columnName)
-    {
-        $this->columnName = $columnName;
-    }
-
-    /**
      * @param string $message
      */
-    public function setMessage(string $message)
+    public function setMessage(string $message): void
     {
         $this->message = $message;
     }
