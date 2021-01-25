@@ -18,6 +18,9 @@ class Request
     /** @var array $session */
     private $session;
 
+    /** @var array $files */
+    private $files;
+
     /**
      * Request constructor.
      */
@@ -27,6 +30,7 @@ class Request
         $this->get = $_GET;
         $this->server = $_SERVER;
         $this->session = &$_SESSION;
+        $this->files = $_FILES;
 
         if (!$this->getCsrfToken()) {
             $this->generateCsrfToken();
@@ -175,5 +179,13 @@ class Request
     public function setCurrentUser(User $user): void
     {
         $this->session['user'] = $user;
+    }
+
+    /**
+     * @return array
+     */
+    public function getUploadedFiles(): array
+    {
+        return $this->files;
     }
 }

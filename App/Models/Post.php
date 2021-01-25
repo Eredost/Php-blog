@@ -142,11 +142,11 @@ class Post extends PostManager
     }
 
     /**
-     * @param int $userId
+     * @param int|string $userId
      *
      * @return Post
      */
-    public function setUserId(int $userId): Post
+    public function setUserId($userId): Post
     {
         $this->userId = $userId;
 
