@@ -3,6 +3,7 @@
 namespace Blog\Controllers;
 
 use Blog\Forms\AdminForm;
+use Blog\Forms\ArticleForm;
 use Blog\Models\CommentManager;
 use Blog\Models\PostManager;
 use Blog\TemplateEngine;
@@ -30,6 +31,63 @@ class AdminController extends TemplateEngine
     public function addArticle()
     {
 
+    }
+
+    public function editArticle($params)
+    {
+        if (!$this->request->isGranted('ROLE_ADMIN')) {
+
+            throw new \Exception('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
+
+        if (!$post = PostManager::find($params['postId'])) {
+
+            throw new \Exception('L\'article que vous recherchez n\'existe pas');
+        }
+        $editForm = new ArticleForm($post);
+        $editForm->handleRequest($this->request->request());
+
+        if ($this->request->isMethod('post') && $editForm->isValid()) {
+            $file = $this->request->getUploadedFiles()['image'];
+
+            if (isset($file)
+                && !empty($file['name'])) {
+
+                $uploadDir = DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . time() . $file['name'];
+                move_uploaded_file($file['tmp_name'], dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'public' . $uploadDir);
+                $post->setImage($this->request->baseURI() . $uploadDir);
+            }
+            $post->update();
+            $this->request->addFlashMessage('success', 'L\'article a été modifié avec succès');
+
+            return $this->redirect($this->router->generate('adminEditArticle', ['postId' => $params['postId']]));
+        }
+
+        return $this->render('backend/editForm', [
+            'editForm' => $editForm->createView(),
+            'postId'   => $params['postId'],
+        ]);
+    }
+
+    public function deleteArticle($params)
+    {
+        if (!$this->request->isGranted('ROLE_ADMIN')) {
+
+            throw new \Exception('Vous n\'êtes pas autorisé à accéder à cette page');
+        }
+        $adminForm = new AdminForm();
+        $adminForm->handleRequest($this->request->request());
+
+        if ($adminForm->isValid()) {
+            if (!$post = PostManager::find($params['postId'])) {
+
+                throw new \Exception('L\'article que vous recherchez n\'existe pas');
+            }
+            $post->delete();
+            $this->request->addFlashMessage('success', 'L\'article a été supprimé avec succès');
+        }
+
+        return $this->redirect($this->router->generate('adminShow'));
     }
 
     public function deleteComment($params)

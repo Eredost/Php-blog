@@ -136,6 +136,18 @@ final class App
         );
         $this->router->map(
             'POST',
+            '/admin/article/[i:postId]/delete',
+            'Blog\Controllers\AdminController#deleteArticle',
+            'adminDeleteArticle'
+        );
+        $this->router->map(
+            'GET|POST',
+            '/admin/article/[i:postId]/edit',
+            'Blog\Controllers\AdminController#editArticle',
+            'adminEditArticle'
+        );
+        $this->router->map(
+            'POST',
             '/admin/comment/[i:commentId]/delete',
             'Blog\Controllers\AdminController#deleteComment',
             'adminDeleteComment'

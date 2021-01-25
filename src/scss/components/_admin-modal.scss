@@ -1,0 +1,22 @@
+.admin-modal {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1em;
+  border: 2px solid #ccc;
+  border-radius: 7px;
+  background-color: #fff;
+
+  &__title {
+    font-size: 1.45em;
+    margin-bottom: 0.8em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
