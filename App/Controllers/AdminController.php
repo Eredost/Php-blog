@@ -97,6 +97,7 @@ class AdminController extends TemplateEngine
         return $this->render('backend/editArticle', [
             'editForm' => $editForm->createView(),
             'postId'   => $params['postId'],
+            'postName' => $post->getTitle(),
         ]);
     }
 

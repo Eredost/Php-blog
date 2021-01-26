@@ -1,4 +1,7 @@
-<?php ob_start() ?>
+<?php
+$title = 'Page introuvable - Michael-dev';
+ob_start()
+?>
 
 <section class="error">
     <div class="section-wrapper">

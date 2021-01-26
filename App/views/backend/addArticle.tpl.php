@@ -1,4 +1,7 @@
-<?php ob_start() ?>
+<?php
+$title = 'Nouvel article - Michael-dev';
+ob_start()
+?>
 
     <section>
         <div class="section-wrapper">

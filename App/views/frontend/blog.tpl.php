@@ -1,4 +1,7 @@
-<?php ob_start(); ?>
+<?php
+$title = 'Blog - Michael-dev';
+ob_start();
+?>
 
 <div class="page">
     <section class="page-banner">

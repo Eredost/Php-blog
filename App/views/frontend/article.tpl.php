@@ -1,5 +1,5 @@
 <?php
-$title = $templateVars['post']->getTitle();
+$title = $templateVars['post']->getTitle() . ' - Michael-dev';
 ob_start();
 ?>
 

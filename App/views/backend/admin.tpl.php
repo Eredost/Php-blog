@@ -1,5 +1,5 @@
 <?php
-$title = 'Administration - Michael dev';
+$title = 'Administration - Michael-dev';
 ob_start();
 ?>
 

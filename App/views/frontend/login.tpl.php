@@ -1,4 +1,7 @@
-<?php ob_start(); ?>
+<?php
+$title = 'Connexion - Michael-dev';
+ob_start();
+?>
 
 <section class="login">
     <div class="section-wrapper">
