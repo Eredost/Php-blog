@@ -1,4 +1,7 @@
-<?php ob_start(); ?>
+<?php
+$title = 'Inscription - Michael-dev';
+ob_start();
+?>
 
 <section class="signup">
     <div class="section-wrapper">

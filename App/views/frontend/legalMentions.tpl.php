@@ -1,4 +1,7 @@
-<?php ob_start(); ?>
+<?php
+$title = 'Mentions légales - Michael-dev';
+ob_start();
+?>
 
 <div class="page">
     <section class="page-banner">
