@@ -2,6 +2,8 @@
 
 namespace Blog\Controllers;
 
+use Blog\Exceptions\AccessDeniedException;
+use Blog\Exceptions\NotFoundException;
 use Blog\Forms\AdminForm;
 use Blog\Forms\ArticleForm;
 use Blog\Models\CommentManager;
@@ -15,7 +17,7 @@ class AdminController extends TemplateEngine
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
 
-            throw new \Exception('Vous n\'êtes pas autorisé à accéder à cette page');
+            throw new AccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
         }
 
         $adminForm = new AdminForm();
@@ -33,7 +35,7 @@ class AdminController extends TemplateEngine
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
 
-            throw new \Exception('Vous n\'êtes pas autorisé à accéder à cette page');
+            throw new AccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
         }
 
         $post = new Post();
@@ -65,12 +67,12 @@ class AdminController extends TemplateEngine
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
 
-            throw new \Exception('Vous n\'êtes pas autorisé à accéder à cette page');
+            throw new AccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
         }
 
         if (!$post = PostManager::find($params['postId'])) {
 
-            throw new \Exception('L\'article que vous recherchez n\'existe pas');
+            throw new NotFoundException('L\'article que vous recherchez n\'existe pas');
         }
         $editForm = new ArticleForm($post);
         $editForm->handleRequest($this->request->request());
@@ -102,7 +104,7 @@ class AdminController extends TemplateEngine
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
 
-            throw new \Exception('Vous n\'êtes pas autorisé à accéder à cette page');
+            throw new AccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
         }
         $adminForm = new AdminForm();
         $adminForm->handleRequest($this->request->request());
@@ -110,7 +112,7 @@ class AdminController extends TemplateEngine
         if ($adminForm->isValid()) {
             if (!$post = PostManager::find($params['postId'])) {
 
-                throw new \Exception('L\'article que vous recherchez n\'existe pas');
+                throw new NotFoundException('L\'article que vous recherchez n\'existe pas');
             }
             $post->delete();
             $this->request->addFlashMessage('success', 'L\'article a été supprimé avec succès');
@@ -123,7 +125,7 @@ class AdminController extends TemplateEngine
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
 
-            throw new \Exception('Vous n\'êtes pas autorisé à accéder à cette page');
+            throw new AccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
         }
         $adminForm = new AdminForm();
         $adminForm->handleRequest($this->request->request());
@@ -144,7 +146,7 @@ class AdminController extends TemplateEngine
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
 
-            throw new \Exception('Vous n\'êtes pas autorisé à accéder à cette page');
+            throw new AccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette page');
         }
         $adminForm = new AdminForm();
         $adminForm->handleRequest($this->request->request());
@@ -152,7 +154,7 @@ class AdminController extends TemplateEngine
         if ($adminForm->isValid()) {
             if (!$comment = CommentManager::find($params['commentId'])) {
 
-                throw new \Exception('Le commentaire que vous recherchez n\'existe pas');
+                throw new NotFoundException('Le commentaire que vous recherchez n\'existe pas');
             }
             $comment->setIsValidated(true);
             $comment->update();
