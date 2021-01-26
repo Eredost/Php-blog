@@ -3,6 +3,7 @@
 namespace Blog;
 
 use \AltoRouter;
+use Blog\Exceptions\NotFoundException;
 use Blog\Utils\Request;
 
 final class App
@@ -33,10 +34,8 @@ final class App
      * Singleton method
      *
      * @return App
-     *
-     * @throws \Exception
      */
-    public static function getInstance()
+    public static function getInstance(): App
     {
         if (empty(self::$instance)) {
             self::$instance = new self();
@@ -60,7 +59,7 @@ final class App
 
         if (!$match) {
 
-            throw new \Exception('No route matched !');
+            throw new NotFoundException('La page que vous recherchez n\'existe pas');
         }
 
         $controllerInfo = explode('#', $match['target']);
@@ -170,5 +169,13 @@ final class App
             'Blog\Controllers\AdminController#adminShow',
             'adminShow'
         );
+    }
+
+    /**
+     * @return AltoRouter
+     */
+    public function getRouter(): AltoRouter
+    {
+        return $this->router;
     }
 }

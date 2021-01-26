@@ -2,6 +2,7 @@
 
 namespace Blog\Controllers;
 
+use Blog\Exceptions\NotFoundException;
 use Blog\Forms\CommentForm;
 use Blog\Models\Comment;
 use Blog\Models\CommentManager;
@@ -25,7 +26,7 @@ class PostController extends TemplateEngine
     {
         if (!$post = PostManager::findOnePostWithAuthorName($params['postId'])) {
 
-            throw new \Exception('L\'article que vous recherchez n\'existe pas');
+            throw new NotFoundException('L\'article que vous recherchez n\'existe pas');
         }
         $lastPosts = PostManager::findLastPosts();
         $comments = CommentManager::findAllCommentsByPostId($params['postId']);
