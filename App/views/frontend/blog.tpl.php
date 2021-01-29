@@ -25,11 +25,8 @@ ob_start();
                     <div class="article-card">
                         <a class="article-card__image" href="<?= $templateVars['router']->generate('articleShow', ['postId' => $post->getId()]) ?>">
                             <time class="article-card__publication-date" datetime="<?= (new DateTime($post->getCreatedAt()))->format('Y-m-d') ?>">
-                                <?=
-                                preg_replace_callback('/\/(\d{1,2})/', function($matches) {
-                                    return '<span>' . numberToAbbrMonthName($matches[1]) . '</span>';
-                                }, (new DateTime($post->getCreatedAt()))->format('d /n'))
-                                ?>
+                                <?= (new DateTime($post->getCreatedAt()))->format('d') ?>
+                                <span><?= $post->getMonthName('createdAt', true) ?></span>
                             </time>
                             <img src="<?= $post->getImage() ?>" alt="">
                         </a>
@@ -44,14 +41,12 @@ ob_start();
                                     <i class="fa fa-comment" aria-hidden="true"></i>
                                     <?= ($post->commentCount > 0 ? $post->commentCount . ' commentaire(s)': 'Pas de commentaires') ?>
                                 </div>
-                                <div>
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    <?=
-                                    preg_replace_callback('/\/(\d{1,2})/', function($matches) {
-                                        return '<span>' . numberToFullyMonthName($matches[1]) . '</span>';
-                                    }, (new DateTime($post->getUpdatedAt() ?? $post->getCreatedAt()))->format('d /n Y'))
-                                    ?>
-                                </div>
+                                <?php if ($post->getUpdatedAt()): ?>
+                                    <div>
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        <?= sprintf((new DateTime($post->getUpdatedAt()))->format('d %\s Y'), $post->getMonthName('updatedAt')) ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
 
                             <h2 class="article-card__title">

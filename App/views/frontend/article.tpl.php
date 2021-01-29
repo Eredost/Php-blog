@@ -24,11 +24,8 @@ ob_start();
                 <div class="article-card">
                     <div class="article-card__image">
                         <time class="article-card__publication-date" datetime="<?= (new DateTime($templateVars['post']->getCreatedAt()))->format('Y-m-d') ?>">
-                            <?=
-                            preg_replace_callback('/\/(\d{1,2})/', function($matches) {
-                                return '<span>' . numberToAbbrMonthName($matches[1]) . '</span>';
-                            }, (new DateTime($templateVars['post']->getCreatedAt()))->format('d /n'))
-                            ?>
+                            <?= (new DateTime($templateVars['post']->getCreatedAt()))->format('d') ?>
+                            <span><?= $templateVars['post']->getMonthName('createdAt', true) ?></span>
                         </time>
                         <img src="<?= $templateVars['post']->getImage() ?>" alt="">
                     </div>
@@ -43,14 +40,12 @@ ob_start();
                                 <i class="fa fa-comment" aria-hidden="true"></i>
                                 <?= (count($templateVars['comments']) > 0 ? count($templateVars['comments']) . ' commentaire(s)': 'Pas de commentaires') ?>
                             </div>
-                            <div>
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                <?=
-                                preg_replace_callback('/\/(\d{1,2})/', function($matches) {
-                                    return '<span>' . numberToFullyMonthName($matches[1]) . '</span>';
-                                }, (new DateTime($templateVars['post']->getUpdatedAt() ?? $templateVars['post']->getCreatedAt()))->format('d /n Y'))
-                                ?>
-                            </div>
+                            <?php if ($templateVars['post']->getUpdatedAt()): ?>
+                                <div>
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    <?= sprintf((new DateTime($templateVars['post']->getUpdatedAt()))->format('d %\s Y'), $templateVars['post']->getMonthName('updatedAt')) ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                         <h2 class="article-card__title">
