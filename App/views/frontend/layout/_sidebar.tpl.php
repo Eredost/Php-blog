@@ -22,11 +22,7 @@
                         <a href="<?= $templateVars['router']->generate('articleShow', ['postId' => $post->getId()]) ?>"><?= $post->getTitle() ?></a>
                     </h3>
                     <time class="article-aside__publication-date" datetime="<?= (new DateTime($post->getCreatedAt()))->format('Y-m-d') ?>">
-                        <?=
-                        preg_replace_callback('/\/(\d{1,2})/', function($matches) {
-                            return numberToFullyMonthName($matches[1]);
-                        }, (new DateTime($post->getCreatedAt()))->format('d /n Y'))
-                        ?>
+                        <?= sprintf((new DateTime($post->getCreatedAt()))->format('d %\s Y'), $post->getMonthName()) ?>
                     </time>
                 </div>
             </div>

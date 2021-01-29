@@ -45,7 +45,6 @@ abstract class TemplateEngine
         $templateVars['router'] = $this->router;
         $templateVars['request'] = $this->request;
 
-        require_once __DIR__ . DIRECTORY_SEPARATOR . 'Utils' . DIRECTORY_SEPARATOR . 'functions.php';
         include __DIR__ . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . $templateName . '.tpl.php';
     }
 }
