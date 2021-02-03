@@ -9,7 +9,7 @@
 
     <!-- OpenGraph -->
     <meta property="og:url"         content="http://blog.michael-dev.fr" />
-    <meta property="og:title"       content="Michaël Coutin - Développeur d\'applications" />
+    <meta property="og:title"       content="Michaël Coutin - Développeur d'applications" />
     <meta property="og:description" content="Blog professionnel présentant mes compétences et réalisations ainsi qu'une section blog afin de retrouver tous les articles que j'ai publiés" />
     <meta property="og:image"       content="<?= $templateVars['request']->baseURI() ?>/uploads/profile-picture.png" />
     <meta property="og:type"        content="website" />
@@ -18,7 +18,7 @@
     <!-- Twitter cards -->
     <meta property="twitter:card"        content="summary">
     <meta property="twitter:description" content="Blog professionnel présentant mes compétences et réalisations ainsi qu'une section blog afin de retrouver tous les articles que j'ai publiés">
-    <meta property="twitter:title"       content="Michaël Coutin - Développeur d\'applications">
+    <meta property="twitter:title"       content="Michaël Coutin - Développeur d'applications">
     <meta property="twitter:image"       content="<?= $templateVars['request']->baseURI() ?>/uploads/profile-picture.png">
 
     <link rel="stylesheet" href="<?= $templateVars['request']->baseURI() ?>/main.css" type="text/css">

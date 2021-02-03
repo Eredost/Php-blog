@@ -50,7 +50,7 @@ trait TimestampableTrait
         $monthNumber = (new \DateTime($this->$property))->format('n');
         $isAbbr = ($abbr ? 1 : 0);
 
-        return $this->monthNames[$monthNumber][$isAbbr];
+        return $this->monthNames[--$monthNumber][$isAbbr];
     }
 
     /**
