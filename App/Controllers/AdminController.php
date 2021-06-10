@@ -58,7 +58,7 @@ class AdminController extends TemplateEngine
             $post->save();
             $this->request->addFlashMessage('success', 'L\'article a été ajouté avec succès');
 
-            return $this->redirect($this->router->generate('adminShow'));
+            return $this->redirect($this->router->generateUrl('adminShow'));
         }
 
         return $this->render('backend/addArticle', [
@@ -95,7 +95,7 @@ class AdminController extends TemplateEngine
             $post->update();
             $this->request->addFlashMessage('success', 'L\'article a été modifié avec succès');
 
-            return $this->redirect($this->router->generate('adminShow'));
+            return $this->redirect($this->router->generateUrl('adminShow'));
         }
 
         return $this->render('backend/editArticle', [
@@ -124,7 +124,7 @@ class AdminController extends TemplateEngine
             $this->request->addFlashMessage('success', 'L\'article a été supprimé avec succès');
         }
 
-        return $this->redirect($this->router->generate('adminShow'));
+        return $this->redirect($this->router->generateUrl('adminShow'));
     }
 
     #[Route('/admin/comment/{commentId<\d+>}/delete', name: 'adminDeleteComment', methods: ['POST'])]
@@ -146,7 +146,7 @@ class AdminController extends TemplateEngine
             $this->request->addFlashMessage('success', 'Le commentaire a été supprimé avec succès');
         }
 
-        return $this->redirect($this->router->generate('adminShow'));
+        return $this->redirect($this->router->generateUrl('adminShow'));
     }
 
     #[Route('/admin/comment/{commentId<\d+>}/validate', name: 'adminValidateComment', methods: ['POST'])]
@@ -169,6 +169,6 @@ class AdminController extends TemplateEngine
             $this->request->addFlashMessage('success', 'Le commentaire a été validé avec succès');
         }
 
-        return $this->redirect($this->router->generate('adminShow'));
+        return $this->redirect($this->router->generateUrl('adminShow'));
     }
 }

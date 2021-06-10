@@ -25,7 +25,7 @@
             <p>Passionné par le monde du développement, j'ai appris en grande majorité sur mon temps de pause en autodidacte à travers diverses plateformes de cours en ligne et en faisant mes premières armes avec le langage Python avant de me lancer dans le développement web.</p>
             <p>J'aime sans cesse découvrir des nouvelles technologies et me lancer des challenges.</p>
 
-            <a href="<?= $templateVars['router']->generate('cv') ?>" class="button">
+            <a href="<?= $templateVars['router']->generateUrl('cv') ?>" class="button">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 Télécharger mon CV
             </a>
@@ -157,7 +157,7 @@
                 endif;
                 ?>
 
-                <form class="form" action="<?= $templateVars['router']->generate('homepage').'#contact' ?>" method="post">
+                <form class="form" action="<?= $templateVars['router']->generateUrl('homepage').'#contact' ?>" method="post">
                     <?= $templateVars['contactForm'] ?>
                 </form>
             </div>

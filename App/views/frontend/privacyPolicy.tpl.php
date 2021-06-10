@@ -9,7 +9,7 @@ ob_start();
             <div class="page-banner__head">
                 <h1 class="page-banner__title">Politique de confidentialité</h1>
                 <div class="page-banner__breadcrumb">
-                    <a href="<?= $templateVars['router']->generate('homepage') ?>">Accueil</a>
+                    <a href="<?= $templateVars['router']->generateUrl('homepage') ?>">Accueil</a>
                     > Politique de confidentialité
                 </div>
             </div>

@@ -23,7 +23,7 @@ ob_start();
                 endif;
                 ?>
                 
-                <form action="<?= $templateVars['router']->generate('login') ?>" method="post">
+                <form action="<?= $templateVars['router']->generateUrl('login') ?>" method="post">
 
                     <?= $templateVars['loginForm'] ?>
 
@@ -34,7 +34,7 @@ ob_start();
             <div class="login__footer">
                 <p>
                     Vous n'êtes pas encore inscrit ?
-                    <a href="<?= $templateVars['router']->generate('signup') ?>">Inscrivez vous</a>
+                    <a href="<?= $templateVars['router']->generateUrl('signup') ?>">Inscrivez vous</a>
                 </p>
             </div>
         </div>

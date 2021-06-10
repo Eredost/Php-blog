@@ -9,7 +9,7 @@ ob_start()
             <h1 class="error__error-code">404</h1>
             <h2 class="error__title">Il semblerait que vous soyez perdu</h2>
             <p class="error__message"><?= $templateVars['message'] ?></p>
-            <a href="<?= $templateVars['router']->generate('homepage') ?>" class="button square">Retour à l'accueil →</a>
+            <a href="<?= $templateVars['router']->generateUrl('homepage') ?>" class="button square">Retour à l'accueil →</a>
         </div>
     </div>
 </section>

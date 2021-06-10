@@ -2,11 +2,12 @@
 
 namespace Blog;
 
+use AttributesRouter\Router;
 use Blog\Utils\Request;
 
 abstract class TemplateEngine
 {
-    /** @var \AltoRouter $router */
+    /** @var Router $router */
     protected $router;
 
     /** @var Request $request */
@@ -15,10 +16,10 @@ abstract class TemplateEngine
     /**
      * TemplateEngine constructor.
      *
-     * @param \AltoRouter $router
-     * @param Request     $request
+     * @param Router  $router
+     * @param Request $request
      */
-    public function __construct(\AltoRouter $router, Request $request)
+    public function __construct(Router $router, Request $request)
     {
         $this->router = $router;
         $this->request = $request;

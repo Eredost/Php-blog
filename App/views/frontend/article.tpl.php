@@ -9,8 +9,8 @@ ob_start();
             <div class="page-banner__head">
                 <h1 class="page-banner__title">Blog</h1>
                 <div class="page-banner__breadcrumb">
-                    <a href="<?= $templateVars['router']->generate('homepage') ?>">Accueil</a>
-                    > <a href="<?= $templateVars['router']->generate('articleList') ?>">Blog</a>
+                    <a href="<?= $templateVars['router']->generateUrl('homepage') ?>">Accueil</a>
+                    > <a href="<?= $templateVars['router']->generateUrl('articleList') ?>">Blog</a>
                     > <?= $templateVars['post']->getTitle() ?>
                 </div>
             </div>
@@ -108,7 +108,7 @@ ob_start();
 
                     <?php if ($templateVars['request']->isAuthenticated()): ?>
 
-                        <form class="form" action="<?= $templateVars['router']->generate('articleShow', ['postId' => $templateVars['post']->getId()]) . '#comment' ?>" method="post" id="comment">
+                        <form class="form" action="<?= $templateVars['router']->generateUrl('articleShow', ['postId' => $templateVars['post']->getId()]) . '#comment' ?>" method="post" id="comment">
                             <?= $templateVars['commentForm']; ?>
                         </form>
 

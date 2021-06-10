@@ -9,13 +9,13 @@ ob_start()
 
                 <h1 class="admin-modal__title">Ajout d'un article</h1>
 
-                <form enctype="multipart/form-data" action="<?= $templateVars['router']->generate('adminAddArticle') ?>" method="post">
+                <form enctype="multipart/form-data" action="<?= $templateVars['router']->generateUrl('adminAddArticle') ?>" method="post">
                     <?= $templateVars['addForm'] ?>
 
                     <div class="admin-modal__actions">
                         <input type="submit" class="button square" value="Ajouter">
 
-                        <a href="<?= $templateVars['router']->generate('adminShow') ?>">
+                        <a href="<?= $templateVars['router']->generateUrl('adminShow') ?>">
                             Retour à l'administration
                         </a>
                     </div>

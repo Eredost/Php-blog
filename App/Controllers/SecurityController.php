@@ -23,7 +23,7 @@ class SecurityController extends TemplateEngine
             if (!empty($user) && password_verify($loginForm->get('password'), $user->getPassword())) {
                 $this->request->setCurrentUser($user);
 
-                return $this->redirect($this->router->generate('homepage'));
+                return $this->redirect($this->router->generateUrl('homepage'));
             }
 
             $this->request->addFlashMessage('error', 'Les informations d\'identification sont invalides');
@@ -47,7 +47,7 @@ class SecurityController extends TemplateEngine
             ;
             $this->request->addFlashMessage('success', 'Votre compte a été créé avec succès, vous pouvez désormais vous connecter');
 
-            return $this->redirect($this->router->generate('login'));
+            return $this->redirect($this->router->generateUrl('login'));
         }
 
         return $this->render('frontend/signup', [
@@ -60,6 +60,6 @@ class SecurityController extends TemplateEngine
     {
         session_destroy();
 
-        return $this->redirect($this->router->generate('homepage'));
+        return $this->redirect($this->router->generateUrl('homepage'));
     }
 }

@@ -50,7 +50,7 @@ class PostController extends TemplateEngine
                 $this->request->addFlashMessage('success', 'Votre commentaire a bien été ajouté, cependant celui-ci devra d\'abord être vérifié et validé par un administrateur afin d\'être visible');
             }
 
-            return $this->redirect($this->router->generate('articleShow', ['postId' => $post->getId()]) . '#comment');
+            return $this->redirect($this->router->generateUrl('articleShow', ['postId' => $post->getId()]) . '#comment');
         }
 
         return $this->render('frontend/article', [

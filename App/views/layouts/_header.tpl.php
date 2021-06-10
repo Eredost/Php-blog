@@ -1,7 +1,7 @@
 <header class="header">
     <div>
         <div class="logo">
-            <a href="<?= $templateVars['router']->generate('homepage') ?>" class="logo__link">
+            <a href="<?= $templateVars['router']->generateUrl('homepage') ?>" class="logo__link">
                 M.
             </a>
         </div>
@@ -11,25 +11,25 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li class="navbar__item">
-                    <a href="<?= $templateVars['router']->generate('homepage') ?>" class="navbar__link active">Accueil</a>
+                    <a href="<?= $templateVars['router']->generateUrl('homepage') ?>" class="navbar__link active">Accueil</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="<?= $templateVars['router']->generate('articleList') ?>" class="navbar__link">Blog</a>
+                    <a href="<?= $templateVars['router']->generateUrl('articleList') ?>" class="navbar__link">Blog</a>
                 </li>
 
                 <?php if ($templateVars['request']->isAuthenticated()): ?>
 
                     <li class="navbar__item">
-                        <a href="<?= $templateVars['router']->generate('disconnect') ?>" class="navbar__link">Déconnexion</a>
+                        <a href="<?= $templateVars['router']->generateUrl('disconnect') ?>" class="navbar__link">Déconnexion</a>
                     </li>
 
                 <?php else: ?>
 
                     <li class="navbar__item">
-                        <a href="<?= $templateVars['router']->generate('login') ?>" class="navbar__link">Connexion</a>
+                        <a href="<?= $templateVars['router']->generateUrl('login') ?>" class="navbar__link">Connexion</a>
                     </li>
                     <li class="navbar__item">
-                        <a href="<?= $templateVars['router']->generate('signup') ?>" class="navbar__link">Inscription</a>
+                        <a href="<?= $templateVars['router']->generateUrl('signup') ?>" class="navbar__link">Inscription</a>
                     </li>
 
                 <?php endif; ?>
