@@ -15,7 +15,7 @@
 
             <div class="article-aside">
                 <a class="article-aside__image" href="<?= $templateVars['router']->generate('articleShow', ['postId' => $post->getId()]) ?>">
-                    <img src="<?= $post->getImage() ?>" alt="">
+                    <img src="<?= $templateVars['request']->baseURI() . $post->getImage() ?>" alt="">
                 </a>
                 <div class="article-aside__head">
                     <h3 class="article-aside__title">

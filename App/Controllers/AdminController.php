@@ -50,7 +50,7 @@ class AdminController extends TemplateEngine
 
                 $uploadDir = DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . time() . $file['name'];
                 move_uploaded_file($file['tmp_name'], dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'public' . $uploadDir);
-                $post->setImage($this->request->baseURI() . $uploadDir);
+                $post->setImage($uploadDir);
             }
             $post->save();
             $this->request->addFlashMessage('success', 'L\'article a été ajouté avec succès');
