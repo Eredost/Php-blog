@@ -2,6 +2,7 @@
 
 namespace Blog\Controllers;
 
+use AttributesRouter\Attribute\Route;
 use Blog\Exceptions\NotFoundException;
 use Blog\Forms\CommentForm;
 use Blog\Models\Comment;
@@ -11,6 +12,7 @@ use Blog\TemplateEngine;
 
 class PostController extends TemplateEngine
 {
+    #[Route('/blog', name: 'articleList')]
     public function articleList()
     {
         $posts = PostManager::findAllPostWithAuthorAndCommentCount();
@@ -22,6 +24,7 @@ class PostController extends TemplateEngine
         ]);
     }
 
+    #[Route('/blog/{postId<\d+>}', name: 'articleShow', methods: ['GET', 'POST'])]
     public function articleShow($params)
     {
         if (!$post = PostManager::findOnePostWithAuthorName($params['postId'])) {

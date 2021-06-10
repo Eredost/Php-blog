@@ -2,12 +2,14 @@
 
 namespace Blog\Controllers;
 
+use AttributesRouter\Attribute\Route;
 use Blog\Forms\ContactForm;
 use Blog\TemplateEngine;
 use Blog\Utils\Mailer;
 
 class MainController extends TemplateEngine
 {
+    #[Route('/', name: 'homepage', methods: ['GET', 'POST'])]
     public function home()
     {
         $contactForm = new ContactForm();
@@ -28,16 +30,19 @@ class MainController extends TemplateEngine
         ]);
     }
 
+    #[Route('/mentions-legales', name: 'legalMentions')]
     public function legalMentions()
     {
         return $this->render('frontend/legalMentions');
     }
 
+    #[Route('/politique-de-confidentialite', name: 'privacyPolicy')]
     public function privacyPolicy()
     {
         return $this->render('frontend/privacyPolicy');
     }
 
+    #[Route('/cv', name: 'cv')]
     public function showCV()
     {
         $file = 'uploads/documents/cv.pdf';
