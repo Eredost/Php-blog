@@ -20,7 +20,6 @@
         "roave/security-advisories": "dev-master"
     },
     "require": {
-        "altorouter/altorouter": "^2.0",
         "eredost/attributes-router": "^1.0"
     },
     "autoload": {
