@@ -22,7 +22,7 @@ class MainController extends TemplateEngine
                 $this->request->addFlashMessage('error', 'Une erreur est survenue, veuillez réessayez plus tard. Si le problème subsiste, contactez l\'administrateur du site.');
             }
 
-            return $this->redirect($this->router->generate('homepage'));
+            return $this->redirect($this->router->generateUrl('homepage'));
         }
 
         return $this->render('frontend/homepage', [

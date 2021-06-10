@@ -9,7 +9,7 @@ ob_start();
             <div class="page-banner__head">
                 <h1 class="page-banner__title">Administration</h1>
                 <div class="page-banner__breadcrumb">
-                    <a href="<?= $templateVars['router']->generate('homepage') ?>">Accueil</a>
+                    <a href="<?= $templateVars['router']->generateUrl('homepage') ?>">Accueil</a>
                     > Administration
                 </div>
             </div>
@@ -35,7 +35,7 @@ ob_start();
             <h2 class="sidebar-title big">Gestion des articles</h2>
 
             <p>
-                <a href="<?= $templateVars['router']->generate('adminAddArticle') ?>" class="button square">+ Ajouter un article</a>
+                <a href="<?= $templateVars['router']->generateUrl('adminAddArticle') ?>" class="button square">+ Ajouter un article</a>
             </p>
 
             <div class="articles-admin">
@@ -48,10 +48,10 @@ ob_start();
                             <?= $post->getTitle() ?>
                         </div>
                         <div class="article-admin__actions">
-                            <a href="<?= $templateVars['router']->generate('adminEditArticle', ['postId' => $post->getId()]) ?>" class="article-admin__edit">
+                            <a href="<?= $templateVars['router']->generateUrl('adminEditArticle', ['postId' => $post->getId()]) ?>" class="article-admin__edit">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
-                            <form action="<?= $templateVars['router']->generate('adminDeleteArticle', ['postId' => $post->getId()]) ?>" method="post" class="article-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer l\'article ?')">
+                            <form action="<?= $templateVars['router']->generateUrl('adminDeleteArticle', ['postId' => $post->getId()]) ?>" method="post" class="article-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer l\'article ?')">
                                 <?= $templateVars['adminForm'] ?>
                                 <button type="submit">
                                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -71,13 +71,13 @@ ob_start();
                             <?= htmlspecialchars($comment->getContent()) ?>
                         </div>
                         <div class="comment-admin__actions">
-                            <form action="<?= $templateVars['router']->generate('adminValidateComment', ['commentId' => $comment->getId()]) ?>" method="post" class="comment-admin__validation">
+                            <form action="<?= $templateVars['router']->generateUrl('adminValidateComment', ['commentId' => $comment->getId()]) ?>" method="post" class="comment-admin__validation">
                                 <?= $templateVars['adminForm'] ?>
                                 <button type="submit">
                                     <i class="fa fa-check" aria-hidden="true"></i>
                                 </button>
                             </form>
-                            <form action="<?= $templateVars['router']->generate('adminDeleteComment', ['commentId' => $comment->getId()]) ?>" method="post" class="comment-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer le commentaire ?')">
+                            <form action="<?= $templateVars['router']->generateUrl('adminDeleteComment', ['commentId' => $comment->getId()]) ?>" method="post" class="comment-admin__deletion" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer le commentaire ?')">
                                 <?= $templateVars['adminForm'] ?>
                                 <button type="submit">
                                     <i class="fa fa-times" aria-hidden="true"></i>

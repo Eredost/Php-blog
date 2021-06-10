@@ -12,14 +12,14 @@ ob_start();
                     Inscription
                 </h1>
 
-                <form action="<?= $templateVars['router']->generate('signup') ?>" method="post">
+                <form action="<?= $templateVars['router']->generateUrl('signup') ?>" method="post">
 
                     <?= $templateVars['signupForm'] ?>
 
                     <p class="signup__agree-terms">
                         En cliquant sur Accepter et s'inscrire, vous acceptez les
                         <a href="#">Conditions d'utilisation</a>
-                        , la <a href="<?= $templateVars['router']->generate('privacyPolicy') ?>">Politique de confidentialité</a>
+                        , la <a href="<?= $templateVars['router']->generateUrl('privacyPolicy') ?>">Politique de confidentialité</a>
                         et la <a href="#">Politique relative aux cookies</a> du site
                     </p>
                     <input class="button square full-width" type="submit" value="Accepter et s'inscrire">
@@ -29,7 +29,7 @@ ob_start();
             <div class="signup__footer">
                 <p>
                     Vous avez déjà un compte ?
-                    <a href="<?= $templateVars['router']->generate('login') ?>">Connectez vous</a>
+                    <a href="<?= $templateVars['router']->generateUrl('login') ?>">Connectez vous</a>
                 </p>
             </div>
         </div>

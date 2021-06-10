@@ -9,7 +9,7 @@ ob_start();
             <div class="page-banner__head">
                 <h1 class="page-banner__title">Blog</h1>
                 <div class="page-banner__breadcrumb">
-                    <a href="<?= $templateVars['router']->generate('homepage') ?>">Accueil</a>
+                    <a href="<?= $templateVars['router']->generateUrl('homepage') ?>">Accueil</a>
                     > Blog
                 </div>
             </div>
@@ -23,7 +23,7 @@ ob_start();
                 <?php foreach($templateVars['posts'] as $post): ?>
 
                     <div class="article-card">
-                        <a class="article-card__image" href="<?= $templateVars['router']->generate('articleShow', ['postId' => $post->getId()]) ?>">
+                        <a class="article-card__image" href="<?= $templateVars['router']->generateUrl('articleShow', ['postId' => $post->getId()]) ?>">
                             <time class="article-card__publication-date" datetime="<?= (new DateTime($post->getCreatedAt()))->format('Y-m-d') ?>">
                                 <?= (new DateTime($post->getCreatedAt()))->format('d') ?>
                                 <span><?= $post->getMonthName('createdAt', true) ?></span>
@@ -50,7 +50,7 @@ ob_start();
                             </div>
 
                             <h2 class="article-card__title">
-                                <a href="<?= $templateVars['router']->generate('articleShow', ['postId' => $post->getId()]) ?>">
+                                <a href="<?= $templateVars['router']->generateUrl('articleShow', ['postId' => $post->getId()]) ?>">
                                     <?= $post->getTitle() ?>
                                 </a>
                             </h2>

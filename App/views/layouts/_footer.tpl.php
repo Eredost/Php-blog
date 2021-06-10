@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="section-wrapper">
         <div class="logo">
-            <a href="<?= $templateVars['router']->generate('homepage') ?>" class="logo__link">
+            <a href="<?= $templateVars['router']->generateUrl('homepage') ?>" class="logo__link">
                 M.
             </a>
         </div>
@@ -30,17 +30,17 @@
                 <?php if ($templateVars['request']->isGranted('ROLE_ADMIN')): ?>
 
                     <li class="footer__link">
-                        <a href="<?= $templateVars['router']->generate('adminShow') ?>">Administration</a>
+                        <a href="<?= $templateVars['router']->generateUrl('adminShow') ?>">Administration</a>
                         <span class="separator">|</span>
                     </li>
                 <?php endif; ?>
 
                 <li class="footer__link">
-                    <a href="<?= $templateVars['router']->generate('privacyPolicy') ?>">Politique de confidentialité</a>
+                    <a href="<?= $templateVars['router']->generateUrl('privacyPolicy') ?>">Politique de confidentialité</a>
                     <span class="separator">|</span>
                 </li>
                 <li class="footer__link">
-                    <a href="<?= $templateVars['router']->generate('legalMentions') ?>">Mentions légales</a>
+                    <a href="<?= $templateVars['router']->generateUrl('legalMentions') ?>">Mentions légales</a>
                 </li>
             </ul>
         </div>
