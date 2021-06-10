@@ -2,6 +2,7 @@
 
 namespace Blog\Controllers;
 
+use AttributesRouter\Attribute\Route;
 use Blog\Forms\LoginForm;
 use Blog\Forms\SignupForm;
 use Blog\Models\User;
@@ -10,6 +11,7 @@ use Blog\TemplateEngine;
 
 class SecurityController extends TemplateEngine
 {
+    #[Route('/connexion', name: 'login', methods: ['GET', 'POST'])]
     public function login()
     {
         $loginForm = new LoginForm();
@@ -32,6 +34,7 @@ class SecurityController extends TemplateEngine
         ]);
     }
 
+    #[Route('/inscription', name: 'signup', methods: ['GET', 'POST'])]
     public function signup()
     {
         $user = new User();
@@ -52,6 +55,7 @@ class SecurityController extends TemplateEngine
         ]);
     }
 
+    #[Route('/deconnexion', name: 'disconnect')]
     public function disconnect()
     {
         session_destroy();

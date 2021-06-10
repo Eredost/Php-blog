@@ -2,6 +2,7 @@
 
 namespace Blog\Controllers;
 
+use AttributesRouter\Attribute\Route;
 use Blog\Exceptions\AccessDeniedException;
 use Blog\Exceptions\NotFoundException;
 use Blog\Forms\AdminForm;
@@ -13,6 +14,7 @@ use Blog\TemplateEngine;
 
 class AdminController extends TemplateEngine
 {
+    #[Route('/admin', name: 'adminShow')]
     public function adminShow()
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
@@ -31,6 +33,7 @@ class AdminController extends TemplateEngine
         ]);
     }
 
+    #[Route('/admin/article', name: 'adminAddArticle', methods: ['GET', 'POST'])]
     public function addArticle()
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
@@ -63,6 +66,7 @@ class AdminController extends TemplateEngine
         ]);
     }
 
+    #[Route('/admin/article/{postId<\d+>/edit}', name: 'adminEditArticle', methods: ['GET', 'POST'])]
     public function editArticle($params)
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
@@ -101,6 +105,7 @@ class AdminController extends TemplateEngine
         ]);
     }
 
+    #[Route('/admin/article/{postId<\d+>}/delete', name: 'adminDeleteArticle', methods: ['POST'])]
     public function deleteArticle($params)
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
@@ -122,6 +127,7 @@ class AdminController extends TemplateEngine
         return $this->redirect($this->router->generate('adminShow'));
     }
 
+    #[Route('/admin/comment/{commentId<\d+>}/delete', name: 'adminDeleteComment', methods: ['POST'])]
     public function deleteComment($params)
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
@@ -143,6 +149,7 @@ class AdminController extends TemplateEngine
         return $this->redirect($this->router->generate('adminShow'));
     }
 
+    #[Route('/admin/comment/{commentId<\d+>}/validate', name: 'adminValidateComment', methods: ['POST'])]
     public function validateComment($params)
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
