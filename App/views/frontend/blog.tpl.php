@@ -28,7 +28,7 @@ ob_start();
                                 <?= (new DateTime($post->getCreatedAt()))->format('d') ?>
                                 <span><?= $post->getMonthName('createdAt', true) ?></span>
                             </time>
-                            <img src="<?= $post->getImage() ?>" alt="">
+                            <img src="<?= $templateVars['request']->baseURI() . $post->getImage() ?>" alt="">
                         </a>
 
                         <div class="article-card__body">

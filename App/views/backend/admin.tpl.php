@@ -42,7 +42,7 @@ ob_start();
                 <?php foreach ($templateVars['posts'] as $post): ?>
                     <div class="article-admin">
                         <div class="article-admin__image">
-                            <img src="<?= $post->getImage() ?>" alt="">
+                            <img src="<?= $templateVars['request']->baseURI() .  $post->getImage() ?>" alt="">
                         </div>
                         <div class="article-admin__title">
                             <?= $post->getTitle() ?>
