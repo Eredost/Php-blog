@@ -24,7 +24,7 @@
         </div>
 
         <div class="footer__nav">
-            <p class="footer__copyrights">Copyright © 2020</p>
+            <p class="footer__copyrights">Copyright © 2020-2021</p>
             <ul class="footer__links">
 
                 <?php if ($templateVars['request']->isGranted('ROLE_ADMIN')): ?>

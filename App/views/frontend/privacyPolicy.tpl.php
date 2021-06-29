@@ -19,7 +19,7 @@ ob_start();
     <section>
         <div class="section-wrapper">
             <h2 class="medium-title">Qui sommes-nous ?</h2>
-            <p>L’adresse de notre site Web est : http://www.blog.michael-dev.fr</p>
+            <p>L’adresse de notre site Web est : https://blog.michael-dev.fr</p>
 
             <h2 class="medium-title">Utilisation des données personnelles collectées</h2>
             <h3 class="small-title">Commentaires</h3>
@@ -48,7 +48,7 @@ ob_start();
 
             <h2 class="medium-title">Informations de contact</h2>
             <p>
-                Email : hello@michael-dev.fr <br>
+                Email : contact@michael-dev.fr <br>
                 Tél. : 06 21 31 33 42
             </p>
         </div>

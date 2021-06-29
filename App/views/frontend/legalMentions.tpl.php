@@ -24,7 +24,7 @@ ob_start();
 
             <h2 class="medium-title">Editeur du site</h2>
             <p>
-                Michaël Coutin – 57 rue Bernard Chochoy 62570 Wizernes <br>
+                Michaël Coutin <br>
                 Tél. : 06 21 31 33 42 <br>
                 Email : michael.coutin62@gmail.com
             </p>
