@@ -66,7 +66,7 @@ class AdminController extends TemplateEngine
         ]);
     }
 
-    #[Route('/admin/article/{postId<\d+>/edit}', name: 'adminEditArticle', methods: ['GET', 'POST'])]
+    #[Route('/admin/article/{postId<\d+>}/edit', name: 'adminEditArticle', methods: ['GET', 'POST'])]
     public function editArticle($params)
     {
         if (!$this->request->isGranted('ROLE_ADMIN')) {
